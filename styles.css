@@ -1,0 +1,30 @@
+html{background:#222;}
+#logo{margin:auto;}
+.pg1 #b1{animation:b1a 1.5s; animation-delay: 0s;}
+.pg1 #b2{animation:b2a 1.5s; animation-delay: 0s;}
+.pg1 #b3{animation:b3a 1.5s; animation-delay: 0s;}
+.pg1 #b4{animation:b4a 1.5s; animation-delay: 0s;}
+.pg1 #b5{animation:b5a 1.5s; animation-delay: 0s;}
+
+@keyframes b1a {
+	0%, 10%, 		 15%, 40%, 			50%, 95%	{opacity:0;}
+			11%, 14%, 		  41%, 44%, 		100%{opacity:1;}
+}
+@keyframes b2a {
+	0%, 15%, 		 20%, 45%, 			55%, 95%	{opacity:0;}
+			16%, 19%, 		  46%, 44%, 		100%{opacity:1;}
+}
+@keyframes b3a {
+	0%, 20%, 		 25%, 50%, 			60%, 95%	{opacity:0;}
+			21%, 24%, 		  51%, 49%, 		100%{opacity:1;}
+}
+@keyframes b4a {
+	0%, 25%, 		 30%, 55%, 			65%, 95%	{opacity:0;}
+			26%, 29%, 		  56%, 54%, 		100%{opacity:1;}
+}
+@keyframes b5a {
+	0%, 30%, 		 35%, 60%, 			70%, 95%	{opacity:0;}
+			31%, 34%, 		  61%, 59%, 		100%{opacity:1;}
+}
+
+
