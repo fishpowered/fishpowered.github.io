@@ -1,5 +1,8 @@
-html{background:linear-gradient(180deg, #222222 0%, #000000 100%);padding:0;margin:0;}
+html{background:linear-gradient(180deg, #2a2527 0%, #000000 100%);padding:0;margin:0;}
 body{padding:0;margin:0;}
+.strip{position:absolute;top:0;height:100%;width:36px;display:block;background:url(stripes.svg) repeat;opacity:0.1;}
+#lftStrip{left:0}
+#rgtStrip{right:0}
 #logo{margin:auto; width:130px; height:130px;}
 .pg1 #bord1, .pg1 #bord2{opacity:0;}
 .pg1 #b1{animation:b1a 1.5s; animation-delay: 0s;}
@@ -29,18 +32,5 @@ body{padding:0;margin:0;}
 			31%, 34%, 		  61%, 59%, 		100%{opacity:1;}
 }
 .centreChild{position:relative}
-.centreChild > * {
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-h1{color:#FD2EC6;
-	font-family: 'Francois One',sans-serif;
-	text-transform: uppercase;
-	font-style: normal;
-	font-weight: normal;
-	line-height: normal;
-	font-size: 16px;
-	text-align: center;}
+.centreChild > * {margin:0;	position:absolute;top:50%;left:50%;	transform:translate(-50%,-50%);}
+h1{color:#FD2EC6;font-family:'Francois One',sans-serif;text-transform:uppercase;font-weight:normal;font-size:16px;text-align:center;	text-shadow:1px 1px 0 black;}
