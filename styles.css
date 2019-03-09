@@ -1,6 +1,8 @@
 html{background:linear-gradient(180deg, #2a2527 0%, #000000 100%);padding:0;margin:0;}
 body{padding:0;margin:0;}
 .strip{position:absolute;top:0;height:100%;width:36px;display:block;background:url(stripes.svg) repeat;opacity:0.1;}
+.strip:hover{opacity:0.5;border:1px solid red;transition:opacity ease-in-out 1s;}
+.strip:active{opacity:1;border:1px solid blue;transition:opacity ease-in-out 1s;}
 #lftStrip{left:0}
 #rgtStrip{right:0}
 #logo{margin:auto; width:130px; height:130px;}
