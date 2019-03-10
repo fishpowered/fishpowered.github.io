@@ -1,11 +1,13 @@
 html{background:linear-gradient(180deg, #2a2527 0%, #000000 100%);padding:0;margin:0;}
 body{padding:0;margin:0;}
-.strip{position:absolute;top:0;height:100%;width:36px;display:block;background:url(stripes.svg) repeat;opacity:0.1;}
-.strip:hover{opacity:0.5;border:1px solid red;transition:opacity ease-in-out 0.5s;}
+.strip{position:absolute;top:0;height:100%;width:36px;opacity:0.1;display:block;background:url(stripes.svg) repeat;animation:strip 7s ease-out;}
 .strip:active{opacity:1;border:1px solid blue;transition:opacity ease-in-out 0.5s;}
 #lftStrip{left:0}
 #rgtStrip{right:0}
 #logo{margin:auto; width:130px; height:130px;}
+#welc{animation:wa 4s;animation-delay:2.4s;bottom:10px;top:auto;opacity:0}
+#slmsg{opacity:1;animation:sla 9s;}
+.hrt{opacity:0;animation:ha 1s; animation-delay:3.5s}
 .pg1 #bord1, .pg1 #bord2{opacity:0;}
 .pg1 #b1{animation:b1a 1.5s; animation-delay: 0s;}
 .pg1 #b2{animation:b2a 1.5s; animation-delay: 0s;}
@@ -33,6 +35,24 @@ body{padding:0;margin:0;}
 	0%, 30%, 		 35%, 60%, 			68%, 72%	{opacity:0;}
 			31%, 34%, 		  61%, 59%, 		100%{opacity:1;}
 }
+@keyframes wa {
+	30%,70.1%{opacity:1;}
+			100%{opacity:0;}
+}
+@keyframes ha {
+		5.1%, 47.5%, 			52.6%, 94.9% 		{opacity:0;}
+0%,5%,				47.6%, 52.5%, 	  		95%, 100%{opacity:1;}
+}
+@keyframes strip {
+	0%,78%{opacity:0; width:0px}
+	100%{opacity:0.1; width:36px;}
+}
+
+@keyframes sla {
+	0%, 75%	{opacity:0;}
+			100%{opacity:1;}
+}
+
 .centreChild{position:relative}
 .centreChild > * {margin:0;	position:absolute;top:50%;left:50%;	transform:translate(-50%,-50%);}
 h1{color:#FD2EC6;font-family:'Francois One',sans-serif;text-transform:uppercase;font-weight:normal;font-size:16px;text-align:center;	text-shadow:1px 1px 0 black;}
