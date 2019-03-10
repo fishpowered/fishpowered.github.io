@@ -6,7 +6,8 @@ body{padding:0;margin:0;}
 #rgtStrip{right:0}
 #logo{margin:auto; width:130px; height:130px;}
 #welc{animation:wa 4s;animation-delay:2.4s;bottom:10px;top:auto;opacity:0}
-#slmsg{opacity:1;animation:sla 9s;}
+#slmsg{opacity:1;animation:sla 9s;width:100%}
+#slmsg svg{vertical-align:middle; margin:0 5px;padding-bottom:5px}
 .hrt{opacity:0;animation:ha 1s; animation-delay:3.5s}
 .pg1 #bord1, .pg1 #bord2{opacity:0;}
 .pg1 #b1{animation:b1a 1.5s; animation-delay: 0s;}
@@ -40,8 +41,8 @@ body{padding:0;margin:0;}
 			100%{opacity:0;}
 }
 @keyframes ha {
-		5.1%, 47.5%, 			52.6%, 94.9% 		{opacity:0;}
-0%,5%,				47.6%, 52.5%, 	  		95%, 100%{opacity:1;}
+		6.1%, 47.5%, 			53.6%, 93.9% 		{opacity:0;}
+0%,6%,				47.6%, 53.5%, 	  		94%, 100%{opacity:1;}
 }
 @keyframes strip {
 	0%,78%{opacity:0; width:0px}
@@ -55,4 +56,5 @@ body{padding:0;margin:0;}
 
 .centreChild{position:relative}
 .centreChild > * {margin:0;	position:absolute;top:50%;left:50%;	transform:translate(-50%,-50%);}
-h1{color:#FD2EC6;font-family:'Francois One',sans-serif;text-transform:uppercase;font-weight:normal;font-size:16px;text-align:center;	text-shadow:1px 1px 0 black;}
+h1,h2{color:#FD2EC6;font-family:'Francois One',sans-serif;text-transform:uppercase;font-weight:normal;font-size:16px;text-align:center;	text-shadow:1px 1px 0 black;}
+h2{font-size:13px}
