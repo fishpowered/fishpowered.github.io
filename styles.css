@@ -11,14 +11,13 @@ body{padding:0;margin:0;}
 #slmsg svg{vertical-align:middle; margin:0 5px;padding-bottom:5px; opacity:0.1}
 .hrt{opacity:0;animation:ha 0.8s; animation-delay:4.5s}
 #pg1 #bord1, #pg1 #bord2{opacity:0;}
-#pg1 #b1{animation:strtDelay 1s steps(2), b1a 1.5s; animation-delay: 0s, 0.99s;}
-#pg1 #b2{animation:strtDelay 1s steps(2), b2a 1.5s; animation-delay: 0s, 0.99s;}
-#pg1 #b3{animation:strtDelay 1s steps(2), b3a 1.5s; animation-delay: 0s, 0.99s;}
-#pg1 #b4{animation:strtDelay 1s steps(2), b4a 1.5s; animation-delay: 0s, 0.99s;}
-#pg1 #b5{animation:strtDelay 1s steps(2), b5a 1.5s; animation-delay: 0s, 0.99s;}
+#pg1 #b1{animation:strtDelay 1s steps(2), b1a 1.5s; animation-delay: 0s, 1s;}
+#pg1 #b2{animation:strtDelay 1s steps(2), b2a 1.5s; animation-delay: 0s, 1s;}
+#pg1 #b3{animation:strtDelay 1s steps(2), b3a 1.5s; animation-delay: 0s, 1s;}
+#pg1 #b4{animation:strtDelay 1s steps(2), b4a 1.5s; animation-delay: 0s, 1s;}
+#pg1 #b5{animation:strtDelay 1s steps(2), b5a 1.5s; animation-delay: 0s, 1s;}
 @keyframes strtDelay {
-	0%,99%{opacity:0;}
-	100%{opacity:1;}
+	0%,100%{opacity:0;}
 }
 @keyframes b1a {
 	0%, 10%, 		 15%, 40%, 			50%, 94%	{opacity:0;}
