@@ -60,7 +60,8 @@ a{color:#fff; border-bottom:1px dotted #aaa; text-decoration:none}
 
 .centreChild{position:relative}
 .centreChild > * {margin:0;	position:absolute;top:50%;left:50%;	transform:translate(-50%,-50%);}
-h1,h2{color:#FD2EC6;font-family:'Francois One',sans-serif;text-transform:uppercase;font-weight:normal;font-size:16px;text-align:center;	text-shadow:1px 1px 0 black;}
+h1,h2,h3{color:#FD2EC6;font-family:'Francois One',sans-serif;text-transform:uppercase;font-weight:normal;font-size:16px;text-align:center;	text-shadow:1px 1px 0 black;}
+h3{color:#fff;font-size:11px}
 #pg1 h2{width:100%}
 h2{font-size:12px}
 .pulse #arw1, .pulse #arw2, .pulse #arw3, .pulse #arw4, .pulse #arw5, .pulse #rgtStrip, .pulse #btmStrip{opacity:0.1;animation:pa 2.7s infinite;}
