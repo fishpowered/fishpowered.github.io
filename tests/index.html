@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+      function openPopup(url,windowName) {
+       newwindow=window.open(url,windowName,'height=600,width=450');
+       if (window.focus) {newwindow.focus()}
+       return false;
+     }
+    </script>
+  </head>
+  <body>
+    <h1>URL's</h1>
+    <ul>
+      <li><a href="http://google.com" target="_blank">Target="_blank"</a></li>
+      <li><a href="http://w3.org" target="frank">Target="frank" href="w3.org"</a></li>
+      <li><a href="https://www.w3schools.com" target="frank">Target="frank" href="w3schools.com"</a></li>
+      <li><a href="https://t.co/A9bDx0jyAn" target="_blank">Target="_blank" href="Twitter redirect (t.co)"</a></li>
+      <li><a href="javascript:openPopup('popup.html', 'bob')">javascript:openPopup('popup.html', 'bob') (should be able to close)</a></li>
+      <li><a href="javascript:openPopup('http://w3.org', 'bob')">javascript:openPopup('http://w3.org', 'bob')</a></li>
+      <li><a href="popup.html">href=popup.html (should NOT be able to close)</a></li>
+      <li><a href="javascript:openPopup('https://reddit.com', 'new_bob')">javascript:openPopup('https://reddit.com', 'new_bob')</a></li>
+      <li><a href=""><a href="">TODO window.close() test</a></li>
+      <li><a href="https://time.nepton.com">time.nepton.com (activity editing)</a></li>
+      <li><a href="reddit://reddit/?link_click_id=1234">reddit://reddit/?link_click_id=1234</a></li>
+      <li><a href="intent://en.m.wikipedia.org/wiki/Test_cricket#Intent;scheme=http;package=org.wikipedia;S.browser_fallback_url=https%3A%2F%2Fwww.google.pt%2Fsearchurl%2Fr.html%23app%3Dorg.wikipedia%26pingbase%3Dhttps%3A%2F%2Fwww.google.pt%2F%26url%3Dhttps%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FTest_cricket;S.android.intent.extra.REFERRER_NAME=https%3A%2F%2Fwww.google.pt;launchFlags=0x8080000;end">intent://en.m.wikipedia.org...</a></li>
+      <li><a href="market://details?id=com.instagram.android">market://details?id=com.instagram.android</a></li>
+      <li><a href="market://search?q=fishpowered&c=apps">market://search?q=fishpowered&c=apps</a></li>
+      <li><a href="tel:+1800229933">tel:+1800229933</a></li>
+      <li><a href="tel://+1800229933">tel://+1800229933</a></li>
+      <li><a href="tel-av:+1800229933">tel-av:+1800229933</a> (video call)</li>
+      <li><a href="skype:skype_user?call">skype:skype_user?call</a></li>
+      <li><a href="whatsapp://">whatsapp://</a></li>
+      <li><a href="whatsapp://send?phone=3464478983">whatsapp://send?phone=3464478983</a></li>
+      <li><a href="mailto:fakeaddress@fakedomain.com">mailto:fakeaddress@fakedomain.com</a></li>
+      <li><a href="sample.pdf">sample.pdf</a></li>
+      <li><a href="sample.doc">sample.doc</a></li>
+      <li><a href="https://badssl.com">https://badssl.com</a></li>
+      <li><a href="https://maps.google.com">GPS test</a></li>
+      
+    </ul>
+    <p><small><a href="http://www.mobilexweb.com/blog/click-to-call-links-mobile-browsers">More info about links above</a></small></p>
+    <p style="color:red;font-weight:bold">REMEMBER TO TRY SAME TESTS IN PREVIEW WINDOW</p>
+    <h1>Text</h1>
+    <p>Yes, Yes, without the oops! This thing comes fully loaded at &pound;1,234,567.89. AM/FM radio, reclining bucket seats, and... power windows. Yes, Yes, without the oops! Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should.</p>
+    <p>Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should. God help us, we're in the hands of engineers. Do you have any idea how long it takes those cups to decompose. This thing comes fully loaded. AM/FM radio, reclining bucket seats, and... power windows.</p>
+    <h1>Forms</h1>
+    <p><input type="text" name="username" /></p>
+    <p><input type="password" name="password" /></p>
+    <p><textarea name="dfgdrgs" rows="5" style="width:100%">Some test test Some test test Some test test Some test test Some test test </textarea></p>
+    <p contenteditable="true">CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH.</p>
+  </body>
+</html>
