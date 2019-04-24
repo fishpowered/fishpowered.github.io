@@ -8,11 +8,11 @@
        if (window.focus) {newwindow.focus()}
        return false;
      }
-	 function getSelection(wnd){
+	 function fpGetSelObject(wnd){
 	  var result = wnd.getSelection();
 
-	  for (var i = 0; !result && i < wnd.frames.length; i++)
-		result = getSelection(wnd.frames[i]);
+	  for (var i = 0; (!result || !result.toString()) && i < wnd.frames.length; i++)
+		result = fpGetSelObject(wnd.frames[i]);
 
 	  return result;
 	}
