@@ -8,17 +8,14 @@
        if (window.focus) {newwindow.focus()}
        return false;
      }
-	 function fpGetSelObject(wnd){
+	 function fpGetSelObject(){
 	 
-	 try{
-	  var result = wnd.getSelection();
-		}catch(e){
-		var result = null;
-		}
-	  for (var i = 0; (!result || !result.toString()) && i < wnd.frames.length; i++)
-		result = fpGetSelObject(wnd.frames[i]);
-
-	  return result;
+		Array.prototype.forEach.call(window.frames, function(frameWin) {
+			if(frameWin.getSelection() && frameWin.getSelection().toString()){
+				return frameWin.getSelection()
+			}
+		});
+		return null;
 	}
     </script>
   </head>
@@ -65,7 +62,9 @@
 	<h1>Images</h1>
 	<p><img src="image.png" alt="standard image" style="width:200px" /></p>
 	<p><a href="http://w3.org"><img src="imagelink.png" alt="image link" style="width:200px" /></a></p>
-	<h1>Iframe</h1>
-	<iframe id="klarna-terms-iframe" frameborder="1" src="index.html" style="border: 1px solid red; width: 100%; height: 50%;"></iframe>
+	<h1>Same domain iframe</h1>
+	<iframe id="klarna-terms-iframe" frameborder="1" src="index.html" style="border: 1px solid blue; width: 100%; height: 50%;"></iframe>
+	<h1>External domain iframe</h1>
+	<iframe frameborder="1" src="https://time.nepton.com" style="border: 1px solid red; width: 100%; height: 50%;"></iframe>
   </body>
 </html>
