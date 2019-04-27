@@ -8,16 +8,7 @@
        if (window.focus) {newwindow.focus()}
        return false;
      }
-	 function fpGetSelObject(){
-	 
-		Array.prototype.forEach.call(window.frames, function(frameWin) {
-			if(frameWin.getSelection() && frameWin.getSelection().toString()){
-				return frameWin.getSelection()
-			}
-		});
-		return null;
-	}
-    </script>
+	 </script>
   </head>
   <body>
     <h1>URL's</h1>
