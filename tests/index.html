@@ -5,7 +5,7 @@
     <script type="text/javascript">
       function openPopup(url,windowName) {
        newwindow=window.open(url,windowName,'height=600,width=450');
-       if (window.focus) {newwindow.focus()}
+       if (newwindow.focus) {newwindow.focus()}
        return false;
      }
 	 </script>
@@ -58,5 +58,11 @@
 	<iframe id="klarna-terms-iframe" frameborder="1" src="index.html" style="border: 1px solid blue; width: 100%; height: 50%;"></iframe>
 	<h1>External domain iframe</h1>
 	<iframe frameborder="1" src="https://w3.org" style="border: 1px solid red; width: 100%; height: 50%;"></iframe>
+	<h1>Scroll tests</h1>
+	<ul>
+		<li><a href="https://wtf1.com">WTF1, disable cookie blocking and then visit Account link in bottom right corner and try to scroll</a></li>
+		<li><a href="https://forums.autosport.com">Anchors when using paging</a></li>
+		<li><a href="https://time.nepton.com/go">time.nepton.com/go</a></li>
+	</ul>
   </body>
 </html>
