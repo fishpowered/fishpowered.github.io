@@ -3,9 +3,9 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript">
-      function openPopup(url,windowName) {
+      function openPopup(url,windowName, focusWindow) {
        newwindow=window.open(url,windowName,'height=600,width=450');
-       //if (newwindow.focus) {newwindow.focus()}
+       if (focusWindow && newWindow && newwindow.focus) {newwindow.focus()}
        return false;
      }
 	 </script>
@@ -18,10 +18,12 @@
       <li><a href="https://www.w3schools.com" target="frank">Target="frank" href="w3schools.com"</a></li>
       <li><a href="https://t.co/A9bDx0jyAn" target="_blank">Target="_blank" href="Twitter redirect (t.co)"</a></li>
 	  <li><a href="https://www.pinterest.com/">Login with FB (the FB page should be able to close itself)</a></li>
-      <li><a href="javascript:openPopup('popup.html', 'bob')">javascript:openPopup('popup.html', 'bob') (should be able to close)</a></li>
-      <li><a href="javascript:openPopup('http://w3.org', 'bob')">javascript:openPopup('http://w3.org', 'bob')</a></li>
+      <li><a href="javascript:openPopup('popup.html', 'bob', false)">javascript:openPopup('popup.html', 'bob', dont focus) (should be able to close)</a></li>
+	  <li><a href="javascript:openPopup('popup.html', 'bob', true)">javascript:openPopup('popup.html', 'bob', focus) (should be able to close)</a></li>
+      <li><a href="javascript:openPopup('http://w3.org', 'bob', false)">javascript:openPopup('http://w3.org', 'bob', dont focus)</a></li>
+	  <li><a href="javascript:openPopup('http://w3.org', 'bob', true)">javascript:openPopup('http://w3.org', 'bob', focus)</a></li>
       <li><a href="popup.html">href=popup.html (should NOT be able to close)</a></li>
-      <li><a href="javascript:openPopup('https://reddit.com', 'new_bob')">javascript:openPopup('https://reddit.com', 'new_bob')</a></li>
+      <li><a href="javascript:openPopup('https://reddit.com', 'new_bob', true)">javascript:openPopup('https://reddit.com', 'new_bob', focus)</a></li>
       <li><a href=""><a href="">TODO window.close() test</a></li>
       <li><a href="https://time.nepton.com">time.nepton.com (activity editing)</a></li>
       <li><a href="reddit://reddit/?link_click_id=1234">reddit://reddit/?link_click_id=1234</a></li>
