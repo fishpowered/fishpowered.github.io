@@ -8,9 +8,20 @@
        if (focusWindow && newWindow && newWindow.focus) {newWindow.focus()}
        return false;
      }
+	 
+	//const doc = iframe.contentDocument || iframe.contentWindow.document;
+	//const win = iframe.contentWindow || iframe.contentDocument.defaultView;
+function inIframe () {
+    try {
+        return window.self !== window.top;
+    } catch (e) {
+        return true;
+    }
+}
 	 </script>
   </head>
   <body>
+	<script type="text/javascript">inIframe ? document.write("IN FRAME") : document.write("NOT IN FRAME")</script>
     <h1>URL's</h1>
     <ul>
       <li><a href="http://google.com" target="_blank">Target="_blank"</a></li>
