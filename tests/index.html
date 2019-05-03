@@ -13,15 +13,15 @@
 	//const win = iframe.contentWindow || iframe.contentDocument.defaultView;
 function inIframe () {
     try {
-        return window.self !== window.top;
+        return window.frameElement;
     } catch (e) {
-        return true;
+        return false;
     }
 }
 	 </script>
   </head>
   <body>
-	<script type="text/javascript">inIframe ? document.write("IN FRAME") : document.write("NOT IN FRAME")</script>
+	<script type="text/javascript">inIframe ? document.write("IN FRAME2") : document.write("NOT IN FRAME2")</script>
     <h1>URL's</h1>
     <ul>
       <li><a href="http://google.com" target="_blank">Target="_blank"</a></li>
