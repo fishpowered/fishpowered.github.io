@@ -13,18 +13,19 @@
 	//const win = iframe.contentWindow || iframe.contentDocument.defaultView;
 function inIframe () {
     try {
-        return window.frameElement;
+        return window !== window.parent;
     } catch (e) {
         return false;
     }
 }
 	 </script>
+	 <style type="text/css">table th{border:1px solid #aaa;font-size:90%}</style>
   </head>
   <body>
-	<script type="text/javascript">inIframe ? document.write("IN FRAME2") : document.write("NOT IN FRAME2")</script>
+	<script type="text/javascript">inIframe() ? document.write("IN FRAME3") : document.write("NOT IN FRAME3")</script>
     <h1>URL's</h1>
     <ul>
-      <li><a href="http://google.com" target="_blank">Target="_blank"</a></li>
+      <li><a href="http://google.com" target="_blank">Target="_blank" href="google"</a></li>
       <li><a href="http://w3.org" target="frank">Target="frank" href="w3.org"</a></li>
       <li><a href="https://www.w3schools.com" target="frank">Target="frank" href="w3schools.com"</a></li>
       <li><a href="https://t.co/A9bDx0jyAn" target="_blank">Target="_blank" href="Twitter redirect (t.co)"</a></li>
@@ -32,10 +33,10 @@ function inIframe () {
       <li><a href="javascript:openPopup('popup.html', 'bob', false)">javascript:openPopup('popup.html', 'bob', dont focus) (should be able to close)</a></li>
 	  <li><a href="javascript:openPopup('popup.html', 'bob', true)">javascript:openPopup('popup.html', 'bob', focus) (should be able to close)</a></li>
       <li><a href="javascript:openPopup('http://w3.org', 'bob', false)">javascript:openPopup('http://w3.org', 'bob', dont focus)</a></li>
-	  <li><a href="javascript:openPopup('http://w3.org', 'bob', true)">javascript:openPopup('http://w3.org', 'bob', focus)</a></li>
+	  <li><a href="javascript:openPopup('https://www.w3schools.com', 'bob', true)">javascript:openPopup('https://www.w3schools.com', 'bob', focus)</a></li>
       <li><a href="popup.html">href=popup.html (should NOT be able to close)</a></li>
       <li><a href="javascript:openPopup('https://reddit.com', 'new_bob', true)">javascript:openPopup('https://reddit.com', 'new_bob', focus)</a></li>
-      <li><a href=""><a href="">TODO window.close() test</a></li>
+      <li><a href="javascript:window.close()">window.close() on current tab which wasn't opened with JS</a></li>
       <li><a href="https://time.nepton.com">time.nepton.com (activity editing)</a></li>
       <li><a href="reddit://reddit/?link_click_id=1234">reddit://reddit/?link_click_id=1234</a></li>
       <li><a href="intent://en.m.wikipedia.org/wiki/Test_cricket#Intent;scheme=http;package=org.wikipedia;S.browser_fallback_url=https%3A%2F%2Fwww.google.pt%2Fsearchurl%2Fr.html%23app%3Dorg.wikipedia%26pingbase%3Dhttps%3A%2F%2Fwww.google.pt%2F%26url%3Dhttps%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FTest_cricket;S.android.intent.extra.REFERRER_NAME=https%3A%2F%2Fwww.google.pt;launchFlags=0x8080000;end">intent://en.m.wikipedia.org...</a></li>
@@ -57,18 +58,18 @@ function inIframe () {
     <p><small><a href="http://www.mobilexweb.com/blog/click-to-call-links-mobile-browsers">More info about links above</a></small></p>
     <p style="color:red;font-weight:bold">REMEMBER TO TRY SAME TESTS IN PREVIEW WINDOW</p>
     <h1>Text</h1>
-    <p>Yes, Yes, without the oops! This thing comes fully loaded at &pound;1,234,567.89. AM/FM radio, reclining bucket seats, and... power windows. Yes, Yes, without the oops! Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should.</p>
+    <p>Yes, Yes, without the oops! This thing comes fully loaded at &pound;1,234,567.89. merry-go-round, AM/FM radio, reclining bucket seats, and... power windows. Yes, Yes, without the oops! Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should.</p>
     <p>Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should. God help us, we're in the hands of engineers. Do you have any idea how long it takes those cups to decompose. This thing comes fully loaded. AM/FM radio, reclining bucket seats, and... power windows.</p>
     <h1>Forms</h1>
     <p><input type="text" name="username" /></p>
-    <p><input type="password" name="password" /></p>
-    <p><textarea name="dfgdrgs" rows="5" style="width:100%">Some test test Some test test Some test test Some test test Some test test </textarea></p>
+    <p><input type="password" name="password" /><input type="submit" value="Submit" /></p>
+    <p><textarea name="dfgdrgs" rows="5" style="width:100%">Some test recover, re-cover, 123.56, test Some test test Some test test Some test test Some test test </textarea></p>
     <p contenteditable="true">CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH CONTENTEDITABLE PARAGRAPH.</p>
 	<h1>Images</h1>
 	<p><img src="image.png" alt="standard image" style="width:200px" /></p>
 	<p><a href="http://w3.org"><img src="imagelink.png" alt="image link" style="width:200px" /></a></p>
 	<p>Image link with download attribute (note: assigning a new filename doesn't currently work): <a href="image.png" download="newfilename.png"><img src="image.png" alt="standard image" style="width:200px" /></a></p>
-	<p>Image with dynamic URL (twitter may block hotlinking): <img src="https://pbs.twimg.com/media/D5G3gcFX4AIfN6a?format=png&name=medium" alt="standard image" style="width:200px" /></p>	
+	<p>Image with <strong>dynamic</strong> URL (twitter may block hotlinking): <img src="https://pbs.twimg.com/media/D5G3gcFX4AIfN6a?format=png&name=medium" alt="standard image" style="width:200px" /></p>	
 	<h1>Same domain iframe</h1>
 	<iframe id="klarna-terms-iframe" frameborder="1" src="index.html" style="border: 1px solid blue; width: 100%; height: 50%;"></iframe>
 	<h1>External domain iframe</h1>
@@ -82,5 +83,115 @@ function inIframe () {
 		<li><a href="app:tests">Experiment selecting/editing text in the textareas</a></li>
 		
 	</ul>
+	<h1>Selections</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Selection</th><th>CUT</th><th>CPY</th><th>PASTE</th><th>SHR</th><th>SEARCH</th><th>TRNS</th><th>DICT</th><th>FAV</th>
+				<th>PIN</th><th>+TAB</th><th>DWNLD</th><th>SEL ALL</th><th>CALC</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Page menu</th><th></th><th></th><th></th><th><input type="checkbox" /></th><th></th><th><input type="checkbox" /></th>
+				<th></th><th><input type="checkbox" /></th>
+				<th><input type="checkbox" /></th><th></th><th></th><th></th><th></th>
+			</tr>
+			<tr>
+				<th>Page menu (when viewing img)</th><th></th><th></th><th></th><th><input type="checkbox" /></th><th></th><th></th><th></th>
+				<th><input type="checkbox" /></th>
+				<th></th><th></th><th><input type="checkbox" /></th><th></th><th></th>
+			</tr>
+			<tr>
+				<th>Word on page</th><th></th><th><input type="checkbox" /></th><th></th><th></th><th><input type="checkbox" /></th><th><input type="checkbox" /></th>
+				<th><input type="checkbox" /></th><th></th><th></th><th></th><th></th><th></th><th></th>
+			</tr>
+			<tr>
+				<th>Number on page</th><th></th><th><input type="checkbox" /></th><th></th><th></th><th><input type="checkbox" /></th>
+				<th></th>
+				<th></th><th></th><th></th><th></th><th></th><th></th><th><input type="checkbox" /></</th>
+			</tr>
+			<tr>
+				<th>Sentence on page</th><th></th><th><input type="checkbox" /></th><th></th><th><input type="checkbox" /></th><th><input type="checkbox" /></th>
+				<th><input type="checkbox" /></th><th></th><th><input type="checkbox" /></th>
+				<th></th><th></th><th></th><th></th><th></th>
+			</tr>
+			<tr>
+				<th>Word in editable</th><th><input type="checkbox" /></th><th><input type="checkbox" /></th><th><input type="checkbox" /></th><th></th><th></th><th></th><th><input type="checkbox" /></th>
+				<th></th>
+				<th></th><th></th><th></th><th><input type="checkbox" /></th><th></th>
+			</tr>
+			<tr>
+				<th>Sentence in editable</th><th><input type="checkbox" /></th><th><input type="checkbox" /></th><th><input type="checkbox" /></th><th></th><th></th><th></th><th></th>
+				<th></th>
+				<th></th><th></th><th></th><th><input type="checkbox" /></th><th></th>
+			</tr>
+			<tr>
+				<th>Number in editable</th><th><input type="checkbox" /></th><th><input type="checkbox" /></th><th><input type="checkbox" />
+				</th><th></th><th></th><th></th><th></th>
+				<th></th>
+				<th></th><th></th><th></th><th><input type="checkbox" /></th><th><input type="checkbox" /></th>
+			</tr>
+			<tr>
+				<th>Nothing in editable</th><th></th><th></th><th><input type="checkbox" /></th><th></th><th></th><th></th><th></th><th></th>
+				<th></th><th></th><th></th><th></th><th></th>
+			</tr>
+			<tr>
+				<th>Long press link</th><th></th><th><input type="checkbox" /></th><th></th><th><input type="checkbox" /></th>
+				<th></th><th></th><th></th><th></th>
+				<th><input type="checkbox" /></th><th><input type="checkbox" /></th><th></th><th></th><th></th>
+			</tr>
+			<tr>
+				<th>Long press img</th><th></th><th></th><th></th><th><input type="checkbox" /></th>
+				<th><input type="checkbox" /></th><th></th><th></th><th><input type="checkbox" /></th>
+				<th></th><th><input type="checkbox" /></th><th><input type="checkbox" /></th><th></th><th></th>
+			</tr>
+			<tr>
+				<th>Long press DYNAMIC img</th><th></th><th></th><th></th><th><input type="checkbox" /></th>
+				<th><input type="checkbox" /></th><th></th><th></th><th><input type="checkbox" /></th>
+				<th></th><th><input type="checkbox" /></th><th><input type="checkbox" /></th><th></th><th></th>
+			</tr>
+			<tr>
+				<th>Long press img link</th><th></th><th></th><th></th><th><input type="checkbox" /></th><th></th><th></th><th></th><th></th>
+				<th><input type="checkbox" /></th><th><input type="checkbox" /></th><th></th><th></th><th></th>
+			</tr>
+			<tr>
+				<th>Video</th><th></th><th></th><th></th><th><input type="checkbox" /></th><th></th><th></th><th></th><th><input type="checkbox" /></th>
+				<th><input type="checkbox" /></th><th></th><th><input type="checkbox" /></th><th></th><th></th>
+			</tr>
+		</tbody>
+	</table>todo: videos, unit conversion, currency conversion, dates (open calendar/appointment?)
+	
+	<h1>Back button behaviour is tab specific to behave like chrome</h1>
+	<p>Behaviour: [NAVIGATE ANY HISTORY BACK, CLOSE ACTIVE TAB+MINIMISE APP]. Triggered by:</p>
+	<ul>
+		<li><input type="checkbox" /> Open link from whatsapp</li>
+	</ul>
+	<p>Behaviour: [NAVIGATE ANY HISTORY BACK, CLOSE ACTIVE TAB+SHOW SPEED DIAL, MINIMISE APP. After returning, there should be ghost tab where u left it]. Triggered by:</p>
+	<ul>
+		<li><input type="checkbox" /> From speed dial, click fave/history item/etc</li>
+		<li><input type="checkbox" /> Switch tab</li>		
+		<li><input type="checkbox" /> Close all tabs</li>
+	</ul>
+	<p>Behaviour: [NAVIGATE ANY HISTORY BACK, CLOSE ACTIVE TAB, SHOW PREV TAB]. Triggered by:</p>
+	<ul>
+		<li><input type="checkbox" /> Press + tab button from nav bar then open a link or address</li>
+		<li><input type="checkbox" /> Open clicked/selected link/image in new tab </li>
+		<li><input type="checkbox" /> Expand preview window to full tab</li>
+	</ul>
+	<p>Behaviour: [BACK TO CURRENT TAB USING TEMP FLAG]. Triggered by:</p>
+	<ul>
+		<li><input type="checkbox" /> Selecting address hint or speed dial list</li>
+	</ul>
+	<p>Behaviour: [SMOOTH SCROLL BACK TO TAB, REMOVE UNUSED ON SETTLE]. Triggered by:</p>
+	<ul>
+		<li><input type="checkbox" /> Pressing +tab button then pressing back</li>
+	</ul>
+	<p>Other use cases:</p>
+	<ul>
+		<li><input type="checkbox" /> Pressing +tab button then clicking on an existing tab link in the tab list. Swipe and check no unused tabs remain</li>
+	</ul>
+	
+	<br><br><br><br><br><br>
   </body>
 </html>
