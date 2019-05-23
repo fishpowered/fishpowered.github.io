@@ -60,7 +60,7 @@ a{color:#fff; border-bottom:1px dotted #aaa; text-decoration:none}
 
 .centreChild{position:relative}
 .centreChild > * {margin:0;	position:absolute;top:50%;left:50%;	transform:translate(-50%,-50%);}
-h1,h2,h3{color:#FD2EC6;font-family:fantasy,sans-serif;/*'Francois One'*/text-transform:uppercase;font-weight:normal;font-size:16px;text-align:center;text-shadow:1px 1px 0 black;}
+h1,h2,h3{color:#FD2EC6;font-family:fantasy,sans-serif;/*'Francois One'*/text-transform:uppercase;letter-spacing:0.2px;font-weight:normal;font-size:16px;text-align:center;text-shadow:1px 1px 0 black;}
 h2{font-size:12px}
 h3{color:#fff;font-size:11px}
 #pg1 h2{width:100%}
