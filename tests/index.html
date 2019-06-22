@@ -28,6 +28,10 @@ function inIframe () {
 	<div style="position:fixed;bottom:0;left:100px;height:50px;background:green;width:100px;color:#fff;border:1px solid darkgreen;">Window docking...</div>
 	<script type="text/javascript">inIframe() ? document.write("IN FRAME3") : document.write("NOT IN FRAME3")</script>
 	<input type="text" name="search" value="Text input at top" />
+	<h1>General</h1>
+	<ul>
+		<li><input type="checkbox" /> Test install and new user experience</li>
+	</ul>
     <h1>URL's</h1>
     <ul>
       <li><a href="http://google.com" target="_blank">Target="_blank" href="google"</a></li>
@@ -81,14 +85,17 @@ function inIframe () {
 	<iframe frameborder="1" src="https://w3.org" style="border: 1px solid red; width: 100%; height: 50%;"></iframe>
 	<h1>Nav bar scrolling tests</h1>
 	<ul>
-		<li><a href="https://wtf1.com">WTF1, disable cookie blocking and then visit Account link in bottom right corner and try to scroll</a> (the page height is a fraction larger than the webview constrained to the navbar)</li>
-		<li><a href="https://forums.autosport.com">Forum when using paging</a></li>
-		<li><a href="https://reddit.com">Reddit when using paging+comments</a></li>	
-		<li><a href="https://time.nepton.com/go">time.nepton.com/go (also add a comment activity in nexus 4 and try scrolling down, the page height exceeds the nav bar but not the window)</a></li>
-		<li><a href="app:tests">Experiment selecting/editing text in the textareas</a></li>
-		<li><a href="app:tests">Selecting text in input at top of page BEFORE scrolling (test docking)</a></li>
-		<li><a href="app:tests">Starting from the top, open "find in page" and search for "scroll" and other words</a></li>
-		<li>TEST EVERYTHING AGAIN BUT WITH NAV BAR HIDING DISABLED</li>
+		<li><input type="checkbox" /> <a href="https://wtf1.com">WTF1, disable cookie blocking and then visit Account link in bottom right corner and try to scroll</a> (the page height is a fraction larger than the webview constrained to the navbar)</li>
+		<li><input type="checkbox" /> <a href="https://forums.autosport.com">Forum when using paging</a></li>
+		<li><input type="checkbox" /> <a href="https://reddit.com">Reddit when using paging+comments</a></li>	
+		<li><input type="checkbox" /> <a href="https://time.nepton.com/go">time.nepton.com/go (also add a comment activity in nexus 4 and try scrolling down, the page height exceeds the nav bar but not the window)</a></li>
+		<li><input type="checkbox" /> <a href="https://developer.android.com/guide/topics/text/autofill-optimize">Scrolling down this page caused the nav bar to pop back up previously</a></li>
+		<li><input type="checkbox" /> <a href="app:tests">Experiment selecting/editing text in the textareas</a></li>
+		<li><input type="checkbox" /> <a href="https://youtube.com">Youtube homepage, LOG IN, then check bottom menu bar doesn't disappear under nav</a></li>
+		<li><input type="checkbox" /> <a href="https://youtube.com">Duckduck image search, expand image, check the visit site link can be clicked at bottom</a></li>
+		<li><input type="checkbox" /> <a href="app:tests">Selecting text in input at top of page BEFORE scrolling (test docking)</a></li>
+		<li><input type="checkbox" /> <a href="app:tests">Starting from the top, open "find in page" and search for "scroll" and other words</a></li>
+		<li><input type="checkbox" /> TEST EVERYTHING AGAIN BUT WITH NAV BAR HIDING DISABLED</li>
 	</ul>
 	<h1>Selections</h1>
 	<table>
