@@ -1,0 +1,53 @@
+<!DOCTYPE>
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<input type="text" name="username" autocomplete="off" />
+		<input type="text" name="username" id="username" />
+		<input type="email" name="email" />
+		<p>password: <input type="password" name="password" /></p>
+		If username exists, inject into page on focus, if multiple exist, show prompt
+		Else, add hook for on change
+		<script type="text/javascript">
+			function injectUsernameOnFocus(fpUsername){
+				[...document.querySelectorAll('input[type=email],input[type=text][name=username],input[type=text][name=email]')].map(fpUsrInput => {						
+					let fpSetUsername = function(e){
+						if(fpUsrInput){
+							fpUsrInput.value = fpUsername;
+							fpUsrInput.select();
+						}
+						fpUsrInput.removeEventListener('focus', fpSetUsername);
+					};
+					fpUsrInput.addEventListener('focus', fpSetUsername);
+				});
+			}
+			function fpSniffUsernameOrEmail(){
+				let fpPasswordInput = document.querySelector('input[type=password]');
+				if (fpPasswordInput){
+					fpPasswordInput.addEventListener('change', (e) => {
+						if(true){
+							console.log("Password changed");
+							[...document.querySelectorAll('input[type=email],input[type=text][name=username],input[type=text][name=email]')].map(fpUsrInput => {						
+								if(fpUsrInput.value){
+									const username = fpUsrInput.value;
+									console.log(username);
+									// TODO set in browser
+									
+								}
+								//fpUsrInput.addEventListener('change', () => {	
+								//});
+							});
+						}
+					
+					});
+				}
+				// Save the username only if password has been entered
+			}
+			//function fpGetSelector
+			fpSniffUsernameOrEmail();
+			injectUsernameOnFocus("my-username");
+		</script>
+	</body>
+</html>
