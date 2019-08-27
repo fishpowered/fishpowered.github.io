@@ -5,12 +5,15 @@
 		<link rel="stylesheet" href="styles.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!--<link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">-->
-		<!-- !!!!TODO!!!!!: when deploying, replace "development.js" with "production.min.js". -->
-		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+		<!-- !!!!TODO!!!!!: when deploying, replace "https://unpkg.com/react@16/umd/react.development.js" with "react.production.min.js". -->
+		<script src="scripts/react.development.js" ></script>
+		<script src="scripts/react-dom.development.js"></script>
 		<style type="text/css">
-			.tag{background:#555; border-radius:10px; padding:5px; color:#ccc}
+			.tag{background:#333; border-radius:5px; padding:5px; color:#bbb; margin:0.5em; border:1px solid #666; box-shadow:1px 1px 0px #000; text-shadow:1px 1px 1px #000; font-family:monospace; text-transform:uppercase; font-size:12px; letter-spacing:1px;}
+			.tag input[type=checkbox]{display:none;}
+			.tagList{text-align:center;}
 			.selected{background-color:#f90}
+			
 		</style>
 		
 	</head>

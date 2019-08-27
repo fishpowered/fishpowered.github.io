@@ -11,43 +11,33 @@
 		If username exists, inject into page on focus, if multiple exist, show prompt
 		Else, add hook for on change
 		<script type="text/javascript">
-			function injectUsernameOnFocus(fpUsername){
-				[...document.querySelectorAll('input[type=email],input[type=text][name=username],input[type=text][name=email]')].map(fpUsrInput => {						
-					let fpSetUsername = function(e){
-						if(fpUsrInput){
-							fpUsrInput.value = fpUsername;
-							fpUsrInput.select();
-						}
-						fpUsrInput.removeEventListener('focus', fpSetUsername);
-					};
-					fpUsrInput.addEventListener('focus', fpSetUsername);
-				});
-			}
-			function fpSniffUsernameOrEmail(){
-				let fpPasswordInput = document.querySelector('input[type=password]');
-				if (fpPasswordInput){
-					fpPasswordInput.addEventListener('change', (e) => {
-						if(true){
-							console.log("Password changed");
-							[...document.querySelectorAll('input[type=email],input[type=text][name=username],input[type=text][name=email]')].map(fpUsrInput => {						
-								if(fpUsrInput.value){
-									const username = fpUsrInput.value;
-									console.log(username);
-									// TODO set in browser
-									
-								}
-								//fpUsrInput.addEventListener('change', () => {	
-								//});
-							});
-						}
-					
+			try{
+				const fpUsernameInputSelector = 'input[type=email],input[type=text][name*=username],input[type=text][name*=email],input[type=text][name*=login]';
+				var fpInjectUsernameOnFocus = (fpUsername) => {	// var because of scope!
+					[...document.querySelectorAll(fpUsernameInputSelector)].map(fpUsrInput => {						
+						let fpRestoreUsername = function(e){
+							if(fpUsrInput){
+								fpUsrInput.value = fpUsername;
+								//fpUsrInput.select();
+							}
+							fpUsrInput.removeEventListener('focus', fpRestoreUsername);
+						};
+						fpUsrInput.addEventListener('focus', fpRestoreUsername);
+						
 					});
 				}
-				// Save the username only if password has been entered
-			}
-			//function fpGetSelector
-			fpSniffUsernameOrEmail();
-			injectUsernameOnFocus("my-username");
+				// Originally the username was only saved 
+				[...document.querySelectorAll(fpUsernameInputSelector)].map(fpUsrInput => {	
+					fpUsrInput.addEventListener('change', () =>{
+						if(fpUsrInput.value){
+							fpandroid.saveUsername(fpUsrInput.value);	
+						}
+					});
+				});
+				
+			}catch(e){console.error("FP auto username err: "+e);}
+			fpInjectUsernameOnFocus("my-username"); // <-- HANDLE SEPARATELY
+			
 		</script>
 	</body>
 </html>

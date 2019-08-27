@@ -21,6 +21,7 @@ function EntertainMe (props) {
 		['Read a book', ['outdoor', 'indoor', 'educational']]
 	];
 	
+	// TODO look at React.memo if need to caching filtering
 	let filteredIdeas = ideas.filter((idea) => selectedTags.every(v => idea[1].includes(v)));
     
 	if(filteredIdeas.length===0){
@@ -29,7 +30,7 @@ function EntertainMe (props) {
 	
     return el(
 		'div',
-		{},
+		{className:'tagList'},
 		[
 			tags.map((tag) => SelectableTag(tag, selectedTags, setSelectedTagsState)),
 			filteredIdeas.map((idea) => el('p', {key:idea[0]}, idea[0])),	
