@@ -4,38 +4,113 @@
 		
 	</head>
 	<body>
-		<input type="text" name="username" autocomplete="off" />
-		<input type="text" name="username" id="username" />
+		<p>
+			<label>Pre-focused username needs injection before click:
+			<input type="text" name="username" id="startOnFocus" />
+			</label>
+		</p>
+		<script type="text/javascript">
+		document.getElementById("startOnFocus").focus();
+		</script>
+		
+		<p>
+			<label>Text field with id="site_username" should inject after click:
+			<input type="text" id="site_username" />
+			</label>
+		</p>		
+		
+		<p>
+			<label>Values set by page should not be replaced:
+			<input type="text" id="site_username" value="don't replace on click" />
+			</label>
+		</p>		
+		
+		<p>
+			<label>Text field with name="site_login" and no input type should inject after click:
+			<input name="site_login" />
+			</label>
+		</p>
+
+		<p>
+			<label>Text field with name="site_login" should inject after click:
+			<input type="text" name="site_login" />
+			</label>
+		</p>		
+		
+		<p>
+			<label>Auto-complete off should be respected:
+			<input autocomplete="off" type="text" name="site_login" />
+			</label>
+		</p>
+		
+		<p>
+			<label>Other fields should not be picked up:
+			<input type="text" name="bob" />
+			</label>
+		</p>
+		
 		<input type="email" name="email" />
 		<p>password: <input type="password" name="password" /></p>
-		If username exists, inject into page on focus, if multiple exist, show prompt
-		Else, add hook for on change
+		If username exists, inject into page on focus, if already focused then auto-inject, 
 		<script type="text/javascript">
 			try{
-				const fpUsernameInputSelector = 'input[type=email],input[type=text][name*=username],input[type=text][name*=email],input[type=text][name*=login]';
-				var fpInjectUsernameOnFocus = (fpUsername) => {	// var because of scope!
-					[...document.querySelectorAll(fpUsernameInputSelector)].map(fpUsrInput => {						
-						let fpRestoreUsername = function(e){
-							if(fpUsrInput){
-								fpUsrInput.value = fpUsername;
-								//fpUsrInput.select();
-							}
-							fpUsrInput.removeEventListener('focus', fpRestoreUsername);
-						};
-						fpUsrInput.addEventListener('focus', fpRestoreUsername);
-						
-					});
-				}
-				[...document.querySelectorAll(fpUsernameInputSelector)].map(fpUsrInput => {	
-					fpUsrInput.addEventListener('change', () =>{
-						if(fpUsrInput.value){
-							fpandroid.saveUsername(fpUsrInput.value);	
+				const existingUsername = 'savedusername'; // <----- TODO: POPULATE FROM PREFS
+				let haystack = ['username', 'uname', 'login', 'email', 'user_name', 'log_in'];
+				let containsUsernameString = (needle) => {
+					if(!needle){
+						return false;
+					}
+					for(i=0;i<haystack.length;i++){
+						if((''+needle).toLowerCase().indexOf(haystack[i]) > -1){
+							return true;
 						}
-					});
-				});
+					}
+					return false;
+				};
+				let fpIsUsernameElement = (element) =>{
+					const elType = (element.getAttribute('type')+'').toLowerCase();
+					const autoComplete = (element.getAttribute('autocomplete')+'').toLowerCase();
+					if(autoComplete=="off"){
+						return false;
+					}
+					return (
+						elType=='email' || elType=='null' // string null on purpose! :/
+						|| (
+							elType=='text' 
+							&& (
+								containsUsernameString(element.getAttribute('name')) 
+								|| containsUsernameString(element.getAttribute('id'))
+							)
+						)
+					);
+				};
+				const fpOnPageClick = (e) => {
+					// on page click in case the username field is dynamically loaded...
+					let element = event.target;
+					if(element.tagName.toLowerCase() == 'input'){						
+						if(fpIsUsernameElement(element)){
+							// Restore existing username to empty input
+							if(existingUsername && (element.value=='' || element.value==null)){								
+								element.value = existingUsername;
+							}
+							// Save changes to username field
+							let fpSaveUsername = function(e){
+								fpandroid.saveUsername(element.value);	
+								element.removeEventListener('change', fpSaveUsername);
+							};
+							element.addEventListener('change', fpSaveUsername);
+						}
+					}
+				}
+				document.addEventListener('click', fpOnPageClick);
 				
+				// If the username field starts focused, the keyboard will already be open so we need to auto inject the username
+				if(existingUsername && document.activeElement && fpIsUsernameElement(document.activeElement) 
+					&& (document.activeElement.value=='' || document.activeElement.value==null)){
+					document.activeElement.value = existingUsername;
+				}
 			}catch(e){console.error("FP auto username err: "+e);}
-			fpInjectUsernameOnFocus("my-username"); // <-- HANDLE SEPARATELY
+			
 			
 		</script>
 	</body>
