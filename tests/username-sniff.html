@@ -44,8 +44,14 @@
 		</p>
 		
 		<p>
-			<label>Other fields should not be picked up:
+			<label>Other field names should not be picked up:
 			<input type="text" name="bob" />
+			</label>
+		</p>
+		
+		<p>
+			<label>Other field types should not be picked up:
+			<textarea name="username"></textarea>
 			</label>
 		</p>
 		
@@ -56,7 +62,7 @@
 			try{
 				const existingUsername = 'savedusername'; // <----- TODO: POPULATE FROM PREFS
 				let haystack = ['username', 'uname', 'login', 'email', 'user_name', 'log_in'];
-				let containsUsernameString = (needle) => {
+				let fpContainsUsernameString = (needle) => {
 					if(!needle){
 						return false;
 					}
@@ -70,7 +76,7 @@
 				let fpIsUsernameElement = (element) =>{
 					const elType = (element.getAttribute('type')+'').toLowerCase();
 					const autoComplete = (element.getAttribute('autocomplete')+'').toLowerCase();
-					if(autoComplete=="off"){
+					if(autoComplete=="off" || element.tagName.toLowerCase() != 'input'){
 						return false;
 					}
 					return (
@@ -78,40 +84,41 @@
 						|| (
 							elType=='text' 
 							&& (
-								containsUsernameString(element.getAttribute('name')) 
-								|| containsUsernameString(element.getAttribute('id'))
+								fpContainsUsernameString(element.getAttribute('name')) 
+								|| fpContainsUsernameString(element.getAttribute('id'))
 							)
 						)
 					);
 				};
+				const fpSetExistingUsernameOnInput = (element) => {
+					element.value = existingUsername;
+					element.selectionStart = element.selectionEnd = element.value.length; // move carat to end
+				};
 				const fpOnPageClick = (e) => {
 					// on page click in case the username field is dynamically loaded...
-					let element = event.target;
-					if(element.tagName.toLowerCase() == 'input'){						
-						if(fpIsUsernameElement(element)){
-							// Restore existing username to empty input
-							if(existingUsername && (element.value=='' || element.value==null)){								
-								element.value = existingUsername;
-							}
-							// Save changes to username field
-							let fpSaveUsername = function(e){
-								fpandroid.saveUsername(element.value);	
-								element.removeEventListener('change', fpSaveUsername);
-							};
-							element.addEventListener('change', fpSaveUsername);
+					let element = event.target;					
+					if(fpIsUsernameElement(element)){
+						// Restore existing username to empty input
+						if(existingUsername && (element.value=='' || element.value==null)){								
+							fpSetExistingUsernameOnInput(element);
 						}
+						// Save changes to username field
+						let fpSaveUsername = function(e){
+							fpandroid.saveUsername(element.value);	
+							element.removeEventListener('change', fpSaveUsername);
+						};
+						element.addEventListener('change', fpSaveUsername);
 					}
+					
 				}
 				document.addEventListener('click', fpOnPageClick);
 				
 				// If the username field starts focused, the keyboard will already be open so we need to auto inject the username
 				if(existingUsername && document.activeElement && fpIsUsernameElement(document.activeElement) 
 					&& (document.activeElement.value=='' || document.activeElement.value==null)){
-					document.activeElement.value = existingUsername;
+					fpSetExistingUsernameOnInput(document.activeElement);
 				}
 			}catch(e){console.error("FP auto username err: "+e);}
-			
-			
 		</script>
 	</body>
 </html>
