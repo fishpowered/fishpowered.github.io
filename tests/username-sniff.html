@@ -55,6 +55,9 @@
 			</label>
 		</p>
 		
+		<p>Google <input type="email" class="whsOnd zHQkBf" jsname="YPqjbf" autocomplete="username" spellcheck="false" tabindex="0" aria-label="Sähköposti tai puhelin" name="identifier" value="" autocapitalize="none" id="identifierId" dir="ltr" data-initial-dir="ltr" data-initial-value="">
+		</p>
+		
 		<input type="email" name="email" />
 		<p>password: <input type="password" name="password" /></p>
 		If username exists, inject into page on focus, if already focused then auto-inject, 
@@ -79,6 +82,9 @@
 					if(autoComplete=="off" || element.tagName.toLowerCase() != 'input'){
 						return false;
 					}
+					if(autocomplete=="username"){
+						return true;
+					}
 					return (
 						elType=='email' || elType=='null' // string null on purpose! :/
 						|| (
@@ -91,17 +97,18 @@
 					);
 				};
 				const fpSetExistingUsernameOnInput = (element) => {
-					element.value = existingUsername;
-					element.selectionStart = element.selectionEnd = element.value.length; // move carat to end
+					if(existingUsername && (element.value=='' || element.value==null)){	
+						element.value = (existingUsername+'').trim();
+						element.selectionStart = element.selectionEnd = element.value.length; // move carat to end
+					}
 				};
 				const fpOnPageClick = (e) => {
 					// on page click in case the username field is dynamically loaded...
 					let element = event.target;					
 					if(fpIsUsernameElement(element)){
 						// Restore existing username to empty input
-						if(existingUsername && (element.value=='' || element.value==null)){								
-							fpSetExistingUsernameOnInput(element);
-						}
+						fpSetExistingUsernameOnInput(element);
+
 						// Save changes to username field
 						let fpSaveUsername = function(e){
 							fpandroid.saveUsername(element.value);	
