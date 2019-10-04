@@ -179,33 +179,66 @@ function inIframe () {
 	</table>todo: videos, unit conversion, currency conversion, dates (open calendar/appointment?)
 	
 	<h1>Back button behaviour is tab specific to behave like chrome</h1>
-	<p>Behaviour: [NAVIGATE ANY HISTORY BACK, CLOSE ACTIVE TAB+MINIMISE APP]. Triggered by:</p>
+	<P>MORE COMPLEX THAN IT LOOKS, PLEASE RUN THROUGH EACH USE CASE AS SUPER IMPORTANT TO USERS!!!</p>
 	<ul>
-		<li><input type="checkbox" /> Open link from whatsapp</li>
+		<li><input type="checkbox" /> Open a tab and click on address bar [speed dial shown with keyboard open + page visible underneath]. Press back ONCE [hides keyboard AND speed dial]</li>
+		<li><input type="checkbox" /> Ensure ZERO tabs are open, then open link from whatsapp then press back [return to whatsapp. Returning to the browser shows speed dial]</li>
+		<li><input type="checkbox" /> Ensure 2 tabs are open, then open link from whatsapp then immediately press back [return to whatsapp. Returning to the browser shows previous tabs]</li>
+		<li><input type="checkbox" /> (TODO) Ensure 2 tabs are open, then open link from whatsapp then switch tabs, switch back, and then press back [should show speed dial instead of minimising]</li>
+		<li><input type="checkbox" /> Ensure 2 tabs open, navigate to first, press +tab button then press back. [return to previous tab. swiping to right should see next tab]</li>
+		<li><input type="checkbox" /> Ensure 2 tabs open, navigate to last, press +tab button then press back. [return to previous tab. should not be able to swipe to a tab on the right]</li>
+		<li><input type="checkbox" /> Have 2 tabs open, switch to FIRST, navigate webview back until speed dial reached [forward btn appears that acts as undo, tab is invisible in bg],
+			<ul>
+				<li><input type="checkbox" /> If forward btn clicked [tab is restored replacing placeholder tab, speed dial hidden]</li>
+				<li><input type="checkbox" /> If fave btn clicked [placeholder tab is used, speed dial hidden, still 2 tabs]. 
+																	Clicking back should go back to speed dial again NOT navigate to prev page history</li>
+				<li><input type="checkbox" /> If address entered [same as above]</li>
+				<li><input type="checkbox" /> If back btn clicked [minimises app]. Reopen app [speed dial shown+open tabs btn]. Click fave btn [should be opened in 1st tab, 2nd tab should be unaffected]</li>
+				<li><input type="checkbox" /> If tab list btn clicked ????</li>
+			</ul>
+		</li>
+		<li><input type="checkbox" /> Have 2 tabs open, switch to LAST, navigate webview back until speed dial reached [forward btn appears that acts as undo, tab is invisible in bg],
+			<ul>
+				<li><input type="checkbox" /> If forward btn clicked [tab is restored replacing placeholder tab, speed dial hidden]</li>
+				<li><input type="checkbox" /> If fave btn clicked [placeholder tab is used, speed dial hidden, still 2 tabs]. 
+																	Clicking back should go back to speed dial again NOT navigate to prev page history</li>
+				<li><input type="checkbox" /> If back btn clicked [minimises app]. Reopen app [speed dial shown+open tabs btn]. Click fave btn [should be opened in 2nd tab, 1st tab should be unaffected]</li>
+			</ul>
+		</li>
+		<li><input type="checkbox" /> Have 1 tabs open, switch to LAST, navigate webview back until speed dial reached [forward btn appears that acts as undo, tab is invisible in bg],
+			<ul>
+				<li><input type="checkbox" /> If forward btn clicked [tab is restored replacing placeholder tab, speed dial hidden]</li>
+				<li><input type="checkbox" /> If fave btn clicked [placeholder tab is used, speed dial hidden, still 2 tabs]. 
+																	Clicking back should go back to speed dial again NOT navigate to prev page history</li>
+				<li><input type="checkbox" /> If back btn clicked [minimises app]. Reopen app [speed dial shown+open tabs btn]. Click fave btn [should be opened in 2nd tab, 1st tab should be unaffected]</li>
+			</ul>
+		</li>
+		
+		<li><input type="checkbox" /> Close all tabs from tab thumbs list</li>
+		<li><input type="checkbox" /> Close all tabs from speed dial action</li>		
+		<li><input type="checkbox" /> Pressing +tab button then clicking on an existing tab link in the tab thumbs list. [Swipe and check no unused tabs remain]</li>
+		<li><input type="checkbox" /> Long click a link, open in new tab, then press back [should close tab and animate to previous tab]</li>
+		<li><input type="checkbox" /> Restore closed tab and press back [close tab, return to previous tab or speed dial if none]</li>
 	</ul>
-	<p>Behaviour: [NAVIGATE ANY HISTORY BACK, CLOSE ACTIVE TAB+SHOW SPEED DIAL, MINIMISE APP. After returning, there should be ghost tab where u left it]. Triggered by:</p>
+	
+	
+	<p>OLD VERSION WHERE SPEED DIAL WAS UNDER TABS</P>
 	<ul>
-		<li><input type="checkbox" /> From speed dial, click fave/history item/etc</li>
-		<li><input type="checkbox" /> Switch tab</li>		
-		<li><input type="checkbox" /> Close all tabs</li>
-	</ul>
-	<p>Behaviour: [NAVIGATE ANY HISTORY BACK, CLOSE ACTIVE TAB, SHOW PREV TAB]. Triggered by:</p>
-	<ul>
-		<li><input type="checkbox" /> Press + tab button from nav bar then open a link or address</li>
-		<li><input type="checkbox" /> Open clicked/selected link/image in new tab </li>
-		<li><input type="checkbox" /> Expand preview window to full tab</li>
-	</ul>
-	<p>Behaviour: [BACK TO CURRENT TAB USING TEMP FLAG]. Triggered by:</p>
-	<ul>
-		<li><input type="checkbox" /> Selecting address hint or speed dial list</li>
-	</ul>
-	<p>Behaviour: [SMOOTH SCROLL BACK TO TAB, REMOVE UNUSED ON SETTLE]. Triggered by:</p>
-	<ul>
-		<li><input type="checkbox" /> Pressing +tab button then pressing back</li>
-	</ul>
-	<p>Other use cases:</p>
-	<ul>
-		<li><input type="checkbox" /> Pressing +tab button then clicking on an existing tab link in the tab list. Swipe and check no unused tabs remain</li>
+		<li><input type="checkbox" /> Ensure no tabs are open, then open link from whatsapp then press back [return to whatsapp. Returning to the browser shows speed dial]</li>
+		<li><input type="checkbox" /> Ensure 2 tabs are open, then open link from whatsapp then immediately press back [return to whatsapp. Returning to the browser shows previous tabs]</li>
+		<li><input type="checkbox" /> TODO Ensure 2 tabs are open, then open link from whatsapp then switch tabs, switch back, and then press back [should show speed dial instead of minimising]</li>
+		<li><input type="checkbox" /> Ensure 2 tabs open, navigate to first, press +tab button then press back. [return to previous tab]</li>
+		<li><input type="checkbox" /> Ensure 2 tabs open, navigate to last, press +tab button then press back. [return to previous tab]</li>
+		<li><input type="checkbox" /> Have 2 tabs open, switch to first, navigate webview back until one of the tabs closes [tab closed message appears], enter address [should populate hidden tab and not affect the other tab]</li>
+		<li><input type="checkbox" /> Have 2 tabs open, switch to last, navigate webview back until one of the tabs closes [tab closed message appears], enter address [should populate hidden tab and not affect the other tab]</li>
+		<li><input type="checkbox" /> Have 2 tabs open, navigate webview back until one of the tabs closes [tab closed message appears], press back again [minimise browser]. Reopen browser [final tab should be visible and the placeholder tab should be closed]</li>
+		<li><input type="checkbox" /> Have 2 tabs open, navigate webview back until one of the tabs closes [tab closed message appears], switch to history list, open closed tabs, switch to open tabs [only 1 tab should be visible, not the placeholder tab]</li>
+		<li><input type="checkbox" /> Have 1 tab open, navigate webview back until it closes [tab closed message appears], press back again [minimise browser]. Reopen browser [speed dial should be visible, and opening an address will result in only 1 tab being open]</li>	
+		<li><input type="checkbox" /> Close all tabs from tab thumbs list</li>
+		<li><input type="checkbox" /> Close all tabs from speed dial action</li>		
+		<li><input type="checkbox" /> Pressing +tab button then clicking on an existing tab link in the tab thumbs list. [Swipe and check no unused tabs remain]</li>
+		<li><input type="checkbox" /> Long click a link, open in new tab, then press back [should close tab and animate to previous tab]</li>
+		<li><input type="checkbox" /> Restore closed tab and press back [close tab, return to previous tab or speed dial if none]</li>
 	</ul>
 	
 	<br><br><br><br><br><br>
