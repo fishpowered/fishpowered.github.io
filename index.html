@@ -3,25 +3,59 @@
 	<head>
 		<title>Fishpowered browser - less crap, more cat</title>
 		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="styles-homepage.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!--<link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">-->
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149792573-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-149792573-1');
+		</script>
 	</head>
-	<body id="pg1">
-		<div class="centreChild" style="height:52%;">
-			<svg id="logo" xmlns="http://www.w3.org/2000/svg" width="535.049" height="535.049" viewBox="0 0 141.565 141.565">
-				<g stroke-linejoin="round">
-					<rect id="b3" width="20.897" height="20.897" x="60.334" y="60.334" rx="2.322" ry="2.322" fill="#fd2ec6" stroke="#000" stroke-width="2"/>
-					<rect id="b4" width="20.897" height="20.897" x="60.334" y="35.204" rx="2.322" ry="2.322" fill="#c62093" stroke="#000" stroke-width="2"/>
-					<rect id="b5" width="20.897" height="20.897" x="85.464" y="35.204" rx="2.322" ry="2.322" fill="#a61a81" stroke="#000" stroke-width="2"/>
-					<rect id="b2" width="20.897" height="20.897" x="35.204" y="60.334" rx="2.322" ry="2.322" fill="#ff56cd" stroke="#000" stroke-width="2"/>
-					<rect id="b1" width="20.897" height="20.897" x="35.204" y="85.464" rx="2.322" ry="2.322" fill="#ff91de" stroke="#000" stroke-width="2"/>
-				</g>
-			</svg>
-			<h1 id="welc">Fishpowered browser<br><img class="hrt" style="height:1em;margin-top:1em" src="heart.svg" alt="much love to anyone who downloaded my app <3" /></h1>
-			<p style="position:absolute;left:-1000px;">Fishpowered is a browser featuring ad blocker, cookie warning blocker, 
-tracking/tracker blocker, privacy precautions, pinnable windows, gestures, themes, and more. Available now on Google play store</p>
+	<body id="homePg">
+		
+		<div>
+			<div id="pg1" style="margin:0 auto;text-align:center">
+				<svg id="logo" xmlns="http://www.w3.org/2000/svg" width="535.049" height="535.049" viewBox="0 0 141.565 141.565">
+					<g stroke-linejoin="round">
+						<rect id="b3" width="20.897" height="20.897" x="60.334" y="60.334" rx="2.322" ry="2.322" fill="#fd2ec6" stroke="#000" stroke-width="2"/>
+						<rect id="b4" width="20.897" height="20.897" x="60.334" y="35.204" rx="2.322" ry="2.322" fill="#c62093" stroke="#000" stroke-width="2"/>
+						<rect id="b5" width="20.897" height="20.897" x="85.464" y="35.204" rx="2.322" ry="2.322" fill="#a61a81" stroke="#000" stroke-width="2"/>
+						<rect id="b2" width="20.897" height="20.897" x="35.204" y="60.334" rx="2.322" ry="2.322" fill="#ff56cd" stroke="#000" stroke-width="2"/>
+						<rect id="b1" width="20.897" height="20.897" x="35.204" y="85.464" rx="2.322" ry="2.322" fill="#ff91de" stroke="#000" stroke-width="2"/>
+					</g>
+				</svg>
+			</div>
+			<div class="fadeInContent">
+				<h1>Fishpowered browser</h1>
+				<div class="promoImages">
+					<img src="./images/promo/1.webp" alt="Your browser your rules! Image showing the sexy browser themes and customisable interface" />
+					<img src="./images/promo/2.webp" alt="Less bull, more cat! Image showing a before image of a browser with a grumpy cat surrounded 
+					by ads and cookie warnings and an after image of a cat visible on the full screen holding two thumbs up. I couldn't find
+					an image of a cat with two thumbs up like this so I had to cut out the thumb of a cat who was holding one thumb up and photoshop it 
+					on to both cats." />
+					<img src="./images/promo/3.webp" alt="We love videos! Listen to videos on the move (image of guy locking the screen while playing a youtube 
+					video and putting it in his pocket). Watch while you browse (image of pinned video while browsing Twitter). Download or save for later." />
+					<img src="./images/promo/4.webp" alt="Your favourite stuff in one place. Image showing how you can collect your favourite pages, videos, images and quotes you find around the web" />
+					<img src="./images/promo/5.webp" alt="Privacy simplified (image showing simplified privacy options like 'block advertisers tracking you' and 'incognito mode protection: EXTREME!'. Trusted security - image showing the browser blocking a deceptive website" />
+					<img src="./images/promo/6.webp" alt="Dark themes and night mode - image showing how nightmode darkens the web page without darkening images. Perfect for battery saving and night browsing" />
+					<img src="./images/promo/7.webp" alt="Fishpowered can be used easily with one hand so two hands equals two fishpowered...? High quality cartoon of person with 4 eyeballs looking at cats on two android phones" />
+				</div>
+				<p>Fishpowered is a browser for people who love the web but are tired with all the ads and privacy hassle they 
+				see on modern websites, 
+				for people who love to multi-task, and for people who love to customise their software
+				to make it their own!</p>
+				<p>Featuring ad blocker, cookie warning blocker, 
+	tracking/tracker blocker, privacy precautions, pinnable windows, gestures, themes, and more.</p>
+				<h2><a href="https://play.google.com/store/apps/details?id=com.mattpike.fishpoweredbrowser">Available for Android phones on Google play store</a></h2>
+			</div>
 		</div>
-		<p class="terms">
+		
+		<p class="terms fadeInContent">
 			<a href="terms-of-use.html" style="color:#888">Terms of use</a> |
 			<a href="privacy-policy-full.html" style="color:#888">Privacy policy</a> |
 			<a href="https://play.google.com/store/apps/details?id=com.mattpike.fishpoweredbrowser" style="color:#888">Play store</a>
