@@ -54,6 +54,10 @@
 			<textarea name="username"></textarea>
 			</label>
 		</p>
+		<p>
+			<label>CONTROLLED INPUTS e.g. twitter (updating username must be done through keyevents otherwise state won't know about it)</label>
+		
+		</p>
 		
 		<p>Google <input type="email" class="whsOnd zHQkBf" jsname="YPqjbf" autocomplete="username" spellcheck="false" tabindex="0" aria-label="Sähköposti tai puhelin" name="identifier" value="" autocapitalize="none" id="identifierId" dir="ltr" data-initial-dir="ltr" data-initial-value="">
 		</p>
@@ -62,10 +66,11 @@
 		<p>password: <input type="password" name="password" /></p>
 		If username exists, inject into page on focus, if already focused then auto-inject, 
 		<script type="text/javascript">
+		(function(){
 			try{
-				const existingUsername = 'savedusername'; // <----- TODO: POPULATE FROM PREFS
-				let haystack = ['username', 'uname', 'login', 'email', 'user_name', 'log_in'];
-				let fpContainsUsernameString = (needle) => {
+				var existingUsername = 'test doodah'; // TODO !!!!!!!!!!!!!!!! <--- INSERT JAVA VAR HERE <---- !!!!!!!!!!!!!!!!!!!!!!!!!
+				var haystack = ['username', 'uname', 'login', 'email', 'user_name', 'log_in'];
+				var fpContainsUsernameString = function(needle) {
 					if(!needle){
 						return false;
 					}
@@ -76,9 +81,9 @@
 					}
 					return false;
 				};
-				let fpIsUsernameElement = (element) =>{
-					const elType = (element.getAttribute('type')+'').toLowerCase();
-					const autoComplete = (element.getAttribute('autocomplete')+'').toLowerCase();
+				var fpIsUsernameElement = function(element) {
+					var elType = (element.getAttribute('type')+'').toLowerCase();
+					var autoComplete = (element.getAttribute('autocomplete')+'').toLowerCase();
 					if(autoComplete=="off" || element.tagName.toLowerCase() != 'input'){
 						return false;
 					}
@@ -96,21 +101,22 @@
 						)
 					);
 				};
-				const fpSetExistingUsernameOnInput = (element) => {
+				var fpSetExistingUsernameOnInput = function(element) {
 					if(existingUsername && (element.value=='' || element.value==null)){	
-						element.value = (existingUsername+'').trim();
-						element.selectionStart = element.selectionEnd = element.value.length; // move carat to end
+						// browser must populate the field with real key events for it to work with controlled inputs
+						element.value = existingUsername; // (adding trailing characters here to remove with real keystrokes wont work)
+						fpandroid.triggerInputChangeEvent(existingUsername);  // ...if we typed the whole email from the browser you get type lag so we will fake adding and delete some whitespace
 					}
 				};
-				const fpOnPageClick = (e) => {
+				var fpOnPageClick = function(e) {
 					// on page click in case the username field is dynamically loaded...
-					let element = event.target;					
+					var element = event.target;					
 					if(fpIsUsernameElement(element)){
 						// Restore existing username to empty input
 						fpSetExistingUsernameOnInput(element);
 
 						// Save changes to username field
-						let fpSaveUsername = function(e){
+						var fpSaveUsername = function(e){
 							fpandroid.saveUsername(element.value);	
 							element.removeEventListener('change', fpSaveUsername);
 						};
@@ -121,11 +127,12 @@
 				document.addEventListener('click', fpOnPageClick);
 				
 				// If the username field starts focused, the keyboard will already be open so we need to auto inject the username
-				if(existingUsername && document.activeElement && fpIsUsernameElement(document.activeElement) 
+				if(document.activeElement && fpIsUsernameElement(document.activeElement) 
 					&& (document.activeElement.value=='' || document.activeElement.value==null)){
 					fpSetExistingUsernameOnInput(document.activeElement);
 				}
 			}catch(e){console.error("FP auto username err: "+e);}
+		})(); // scope var because let and const dont work on old versions of chrome
 		</script>
 	</body>
 </html>
