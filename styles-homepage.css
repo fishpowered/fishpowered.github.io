@@ -1,5 +1,5 @@
 #homePg{padding:0 10%}
 #homePg .fadeInContent{opacity:1;animation:sla 4s;width:100%}
-
+ul li{text-align:left}
 .promoImages{display:flex; justify-content:center; margin-top:1em}
 .promoImages img{width:14%; margin:0 1%}
