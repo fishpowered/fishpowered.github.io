@@ -1,14 +1,15 @@
-#homePg{padding:0 10%}
-
+.featurePage{padding:0 10%}
 ul li{text-align:left}
 img.bordered{border:20px solid RGBA(50,50,50,0.4);display:inline-block}
 img.left{margin-right:20px}
 img.right{margin-left:20px}
 .flexRow{display:flex; justify-content:center; margin-top:1em; align-items:center}
 .flexRow.reversed{flex-direction:row-reverse}
-
-main h2{font-size:1.1em; color:aqua}
-main p{font-size:1.1em}
+header{text-align:center}
+.featureHeader{margin:0 auto; max-width:600px; width:100%}
+.strip{animation:none}
+main h2.alt{font-size:1.1em; color:aqua; font-family:sans-serif,helvetica}
+main p{font-size:1.1em; line-height: 1.3em;}
 main hr{
 	border: 0;
     height: 1px;
@@ -21,6 +22,6 @@ main hr{
 	img.bordered{width:60%}
 	img.left{margin-right:0}
 	img.right{margin-left:0}
-	#homePg{padding:0 2%}
+	.featurePage{padding:0 2%}
 	main hr{margin-bottom:2em}
 }
