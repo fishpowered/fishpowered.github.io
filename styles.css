@@ -1,6 +1,6 @@
 html{background:linear-gradient(180deg, #2a2527 0%, #000000 100%);padding:0;margin:0;}
 body{padding:0;margin:0;}
-.strip{position:absolute;top:0;height:100%;width:36px;opacity:0.1;display:block;background:url(stripes.svg) repeat;animation:strip 7s ease-out; z-index:99}
+.strip{position:fixed;top:0;height:100%;width:36px;opacity:0.1;display:block;background:url(stripes.svg) repeat;animation:strip 7s ease-out; z-index:99}
 .strip:active{opacity:0.5; transition:opacity ease-in-out 0.5s;}
 #lftStrip{left:0}
 #rgtStrip{right:0}
