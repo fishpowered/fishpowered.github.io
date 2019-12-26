@@ -1,0 +1,9 @@
+#homePg{padding:0 10%}
+#homePg .fadeInContent{opacity:1;animation:sla 4s;width:100%}
+ul li{text-align:left}
+img.bordered{border:20px solid RGBA(50,50,50,0.4);}
+.flexRow{display:flex; justify-content:center; margin-top:1em}
+@media only screen and (max-width: 600px) {
+	.flexRow{display:block}
+}
+p{font-size:1.4em}
