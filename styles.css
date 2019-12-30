@@ -74,5 +74,5 @@ h3{color:#fff;font-size:11px}
 	10%	{opacity:0.25;}
 	0%,20%,100%{opacity:0.1;}
 }
-.terms{position:fixed;left:0;bottom:0;width:100%;padding:0 36px 30px 36px;text-align:center;margin:0 auto;box-sizing:border-box; background-color:RGBA(0,0,0,0.7); z-index:98}
+.terms{position:fixed;left:0;bottom:0;width:100%;padding:12px 36px 12px 36px;text-align:center;margin:0 auto;box-sizing:border-box; background-color:RGBA(0,0,0,0.7); z-index:98}
 #pg1 .fadeInContent{opacity:1;animation:sla 9s;width:100%}
