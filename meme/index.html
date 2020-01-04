@@ -72,11 +72,11 @@
 						var ctx = canvas.getContext("2d");
 
 						image = new Image(0, 0);
-							image.onload = function () {
-								canvas.width = this.naturalWidth;
-								canvas.height = this.naturalHeight;
+						image.onload = function () {
+							canvas.width = this.naturalWidth;
+							canvas.height = this.naturalHeight;
 
-								var top = 0;
+							var top = 0;
 							var left = 0;
 							var cellspace = 0;
 							var memeTargetWidth = $("#meme-bg-target").width();
@@ -84,37 +84,35 @@
 							var font = 40;
 							newFont = ( font / memeTargetWidth) * canvas.width;
 
+							// Text style
 							ctx.drawImage(this, 0,0);
 							ctx.font = newFont+"px Impact";
 							ctx.fillStyle = "#FFFFFF";
 							ctx.strokeStyle = 'black';
 							ctx.lineWidth = 4;
 							ctx.fillStyle = 'white';
+							//ctx.textAlign = "center";
 							
 
-							  $(".meme-txt-area").each(function(){
-
-								  cellspace = parseInt($(this).css("padding"));
-								  left = parseInt($(this).css("left")) + cellspace;
-								  newLeft = ( left / memeTargetWidth) * canvas.width;
-								  top = parseInt($(this).css("top")) + 3 * cellspace;
-								  newTop = ( top / memeTargetHeight) * canvas.height;
-								  var finalText = ($(this).text()+'').toUpperCase();
-								  ctx.strokeText(finalText, newLeft, newTop);
-								  ctx.fillText(finalText, newLeft, newTop);
-							  });
-						};
-						
+						    $(".meme-txt-area").each(function(){
+							    cellspace = parseInt($(this).css("padding"));
+							    left = parseInt($(this).css("left")) + cellspace;
+							    newLeft = ( left / memeTargetWidth) * canvas.width;
+							    top = parseInt($(this).css("top")) + cellspace + 22;
+							    newTop = ( top / memeTargetHeight) * canvas.height;
+							    var finalText = ($(this).text()+'').toUpperCase();
+							    ctx.strokeText(finalText, newLeft, newTop);
+							    ctx.fillText(finalText, newLeft, newTop);
+							});
+						};	
 					   image.src = $("#img-meme-bg").attr("src");
 					}
 
 					$(document).ready(function (e) {
 						$("#save-as-image").on('click', function () {
 							copyToCanvas($('#meme-bg-target'));
-						
 							var imageData = document.getElementById('meme-preview').toDataURL();
 							$('#downloadLink').show().attr('download', true).attr('href', imageData);
-							//setTimeout(function(){}, 1000);
 						});
 						
 					});
