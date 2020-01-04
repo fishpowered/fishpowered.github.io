@@ -21,16 +21,25 @@ body {
 	position:relative;
 }
 .meme-txt-area {
-	border:#FFF 1px dotted;
+	border:#FFF 1px dashed;
+	box-shadow:1px 1px 1px #000;
 	position:absolute;
 	top:0;
 	left:0;
 	padding:10px;
 	min-width:200px;
-	color:#00ffe7;
 	text-align:left;
 	cursor:move;
     font-size:24px;
+	font-family: impact,arial;
+    text-transform: uppercase;
+	color:#fff;
+	font-size:40px;
+	text-stroke: black;
+    text-stroke-width: 2px;
+	-webkit-text-stroke: black;
+    -webkit-text-stroke-width: 2px;
+	
 }
 .meme-txt-area:focus {
 	outline: none;

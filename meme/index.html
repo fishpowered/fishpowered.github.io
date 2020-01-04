@@ -35,7 +35,7 @@
 				<main>
 					
 					<div id="meme-bg-target">
-						<img src="default.jpg" id="img-meme-bg" class="img-meme-bg" />
+						<img src="default.png" id="img-meme-bg" class="img-meme-bg" />
 					</div>
 					<div>
 						<!--<input type="file" name="meme_bg" value="Upload MEME Image" class="choose-file" onChange="showPreview(this);" />-->
@@ -43,15 +43,9 @@
 						<input type="button" name="save-as-image" id="save-as-image" class="btn-save" value="Generate" />
 						<a href="" id="downloadLink" style="display:none">Download</a>
 					</div>
-
-					<div class="label-preview">Preview</div>
-					<div id="meme-canvas-container">
+					<div id="meme-canvas-container" style="">position:fixed; left:-1000000px
 						<canvas id="meme-preview"></canvas>
-						
 					</div>
-
-					
-
 					<script>
 					function showPreview(objFileInput) 
 					{
@@ -87,12 +81,16 @@
 							var cellspace = 0;
 							var memeTargetWidth = $("#meme-bg-target").width();
 							var memeTargetHeight = $("#meme-bg-target").height();
-							var font = 24;
+							var font = 40;
 							newFont = ( font / memeTargetWidth) * canvas.width;
 
-							  ctx.drawImage(this, 0,0);
-							  ctx.font = newFont+"px Arial";
-								  ctx.fillStyle = "#00ffe7";
+							ctx.drawImage(this, 0,0);
+							ctx.font = newFont+"px Impact";
+							ctx.fillStyle = "#FFFFFF";
+							ctx.strokeStyle = 'black';
+							ctx.lineWidth = 4;
+							ctx.fillStyle = 'white';
+							
 
 							  $(".meme-txt-area").each(function(){
 
@@ -101,9 +99,11 @@
 								  newLeft = ( left / memeTargetWidth) * canvas.width;
 								  top = parseInt($(this).css("top")) + 3 * cellspace;
 								  newTop = ( top / memeTargetHeight) * canvas.height;
-								  ctx.fillText($(this).text(), newLeft, newTop);
-								  });
-							};
+								  var finalText = ($(this).text()+'').toUpperCase();
+								  ctx.strokeText(finalText, newLeft, newTop);
+								  ctx.fillText(finalText, newLeft, newTop);
+							  });
+						};
 						
 					   image.src = $("#img-meme-bg").attr("src");
 					}
@@ -111,10 +111,10 @@
 					$(document).ready(function (e) {
 						$("#save-as-image").on('click', function () {
 							copyToCanvas($('#meme-bg-target'));
-							setTimeout(function(){
-								var imageData = document.getElementById('meme-preview').toDataURL();
-								$('#downloadLink').show().attr('download', true).attr('href', imageData);
-							}, 1000);
+						
+							var imageData = document.getElementById('meme-preview').toDataURL();
+							$('#downloadLink').show().attr('download', true).attr('href', imageData);
+							//setTimeout(function(){}, 1000);
 						});
 						
 					});
