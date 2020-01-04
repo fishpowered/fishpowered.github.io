@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="../styles.css">
 		<link rel="stylesheet" href="../styles-promo-pages.css">
 		<link rel="stylesheet" href="jquery-ui.min.css">
-		<link rel="stylesheet" href="style.css?v=1">
+		<link rel="stylesheet" href="style.css?v=2">
 
 		<meta name="description" content="Generate/create your own memes from images on the net">
 		<meta name="keywords" content="fishpowered,browser,meme,generator,creator">
@@ -24,6 +24,12 @@
 
 		  gtag('config', 'UA-149792573-1');
 		</script>
+		
+		<script>
+	
+		var url = new URL(window.location.href);
+		var src = url.searchParams.get("src");
+		</script>
 	</head>
 	<body class="featurePage">
 		<header>
@@ -36,6 +42,14 @@
 					
 					<div id="meme-bg-target">
 						<img src="default.png" id="img-meme-bg" class="img-meme-bg" />
+						<script>
+					
+						var url = new URL(window.location.href);
+						var src = url.searchParams.get("src");
+						if(src){
+							$('#img-meme-bg').attr('src', src);
+						}
+						</script>
 					</div>
 					<div>
 						<!--<input type="file" name="meme_bg" value="Upload MEME Image" class="choose-file" onChange="showPreview(this);" />-->
@@ -86,7 +100,7 @@
 							var lineHeight = newFont;
 							// Text style
 							ctx.drawImage(this, 0,0);
-							ctx.font = newFont+"px Impact";
+							ctx.font = "bold "+newFont+"px Impact";
 							ctx.fillStyle = "#FFFFFF";
 							ctx.strokeStyle = 'black';
 							ctx.lineWidth = 4;
@@ -98,11 +112,10 @@
 							    cellspace = parseInt($(this).css("padding"));
 							    left = parseInt($(this).css("left")) + cellspace;
 							    newLeft = ( left / memeTargetWidth) * canvas.width;
-							    top = parseInt($(this).css("top")) + cellspace + 37;
+							    top = parseInt($(this).css("top")) + cellspace + 33; // arbitrary padding that seems to work on mobile
 							    newTop = ( top / memeTargetHeight) * canvas.height;
-							    var finalText = ($(this).html()+'').replace(/<div>/gi,'<BR>').replace(/<\/div>/gi,'').toUpperCase();
-								
-								var lines = finalText.split('<BR>');
+							    var finalText = ($(this).html()+'').replace(/<div>/gi,'<br>').replace(/<\/div>/gi,''); // .text() removes line breaks so use html
+								var lines = finalText.split('<br>');
 								for (var i = 0; i<lines.length; i++){
 									
 									ctx.fillText(lines[i], newLeft, newTop+ (i*lineHeight));
