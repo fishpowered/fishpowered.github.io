@@ -11,6 +11,9 @@
 		<meta name="keywords" content="fishpowered,browser,meme,generator,creator">
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="jquery-1.11.2.min.js"></script>
+		<script src="jquery-ui.min.js"></script>
+		<script src="jquery.ui.touch-punch.min.js"></script>
 		<!--<link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">-->
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149792573-1"></script>
@@ -30,27 +33,24 @@
 			
 			<div class="" style="padding-bottom:50px">
 				<main>
-
-					<div>
-						<input type="file" name="meme_bg" value="Upload MEME Image" class="choose-file" onChange="showPreview(this);" />
-						<input type="button" name="add_text" value="Add Text" class="btn-add" onClick="createTextArea()" />
-					</div>
-
+					
 					<div id="meme-bg-target">
 						<img src="default.jpg" id="img-meme-bg" class="img-meme-bg" />
 					</div>
 					<div>
-						<input type="button" name="save-as-image" id="save-as-image" class="btn-save" value="Save" />
+						<!--<input type="file" name="meme_bg" value="Upload MEME Image" class="choose-file" onChange="showPreview(this);" />-->
+						<input type="button" name="add_text" value="Add Text" class="btn-add" onClick="createTextArea()" />
+						<input type="button" name="save-as-image" id="save-as-image" class="btn-save" value="Generate" />
+						<a href="" id="downloadLink" style="display:none">Download</a>
 					</div>
 
 					<div class="label-preview">Preview</div>
 					<div id="meme-canvas-container">
 						<canvas id="meme-preview"></canvas>
+						
 					</div>
 
-					<script src="jquery-1.11.2.min.js"></script>
-					<script src="jquery-ui.min.js"></script>
-					<script src="jquery.ui.touch-punch.min.js"></script>
+					
 
 					<script>
 					function showPreview(objFileInput) 
@@ -111,6 +111,10 @@
 					$(document).ready(function (e) {
 						$("#save-as-image").on('click', function () {
 							copyToCanvas($('#meme-bg-target'));
+							setTimeout(function(){
+								var imageData = document.getElementById('meme-preview').toDataURL();
+								$('#downloadLink').show().attr('download', true).attr('href', imageData);
+							}, 1000);
 						});
 						
 					});
