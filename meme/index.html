@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="../styles.css">
 		<link rel="stylesheet" href="../styles-promo-pages.css">
 		<link rel="stylesheet" href="jquery-ui.min.css">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="style.css?v=1">
 
 		<meta name="description" content="Generate/create your own memes from images on the net">
 		<meta name="keywords" content="fishpowered,browser,meme,generator,creator">
@@ -83,7 +83,7 @@
 							var memeTargetHeight = $("#meme-bg-target").height();
 							var font = 40;
 							newFont = ( font / memeTargetWidth) * canvas.width;
-
+							var lineHeight = newFont;
 							// Text style
 							ctx.drawImage(this, 0,0);
 							ctx.font = newFont+"px Impact";
@@ -98,11 +98,17 @@
 							    cellspace = parseInt($(this).css("padding"));
 							    left = parseInt($(this).css("left")) + cellspace;
 							    newLeft = ( left / memeTargetWidth) * canvas.width;
-							    top = parseInt($(this).css("top")) + cellspace + 22;
+							    top = parseInt($(this).css("top")) + cellspace + 37;
 							    newTop = ( top / memeTargetHeight) * canvas.height;
-							    var finalText = ($(this).text()+'').toUpperCase();
-							    ctx.strokeText(finalText, newLeft, newTop);
-							    ctx.fillText(finalText, newLeft, newTop);
+							    var finalText = ($(this).html()+'').replace(/<div>/gi,'<BR>').replace(/<\/div>/gi,'').toUpperCase();
+								
+								var lines = finalText.split('<BR>');
+								for (var i = 0; i<lines.length; i++){
+									
+									ctx.fillText(lines[i], newLeft, newTop+ (i*lineHeight));
+									ctx.strokeText(lines[i], newLeft, newTop+ (i*lineHeight));
+								}
+							    
 							});
 						};	
 					   image.src = $("#img-meme-bg").attr("src");
