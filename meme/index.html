@@ -1,0 +1,128 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>Fishpowered - meme generator</title>
+		<link rel="stylesheet" href="../styles.css">
+		<link rel="stylesheet" href="../styles-promo-pages.css">
+		<link rel="stylesheet" href="jquery-ui.min.css">
+		<link rel="stylesheet" href="style.css">
+
+		<meta name="description" content="Generate/create your own memes from images on the net">
+		<meta name="keywords" content="fishpowered,browser,meme,generator,creator">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--<link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">-->
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149792573-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-149792573-1');
+		</script>
+	</head>
+	<body class="featurePage">
+		<header>
+			<h1>Fishpowered meme generator</h1>
+		</header>
+		<div>
+			
+			<div class="" style="padding-bottom:50px">
+				<main>
+
+					<div>
+						<input type="file" name="meme_bg" value="Upload MEME Image" class="choose-file" onChange="showPreview(this);" />
+						<input type="button" name="add_text" value="Add Text" class="btn-add" onClick="createTextArea()" />
+					</div>
+
+					<div id="meme-bg-target">
+						<img src="default.jpg" id="img-meme-bg" class="img-meme-bg" />
+					</div>
+					<div>
+						<input type="button" name="save-as-image" id="save-as-image" class="btn-save" value="Save" />
+					</div>
+
+					<div class="label-preview">Preview</div>
+					<div id="meme-canvas-container">
+						<canvas id="meme-preview"></canvas>
+					</div>
+
+					<script src="jquery-1.11.2.min.js"></script>
+					<script src="jquery-ui.min.js"></script>
+					<script src="jquery.ui.touch-punch.min.js"></script>
+
+					<script>
+					function showPreview(objFileInput) 
+					{
+						if (objFileInput.files[0]) 
+						{
+							var fileReader = new FileReader();
+							fileReader.onload = function (e) {
+								$("#meme-bg-target img").attr('src', e.target.result);
+							}
+							fileReader.readAsDataURL(objFileInput.files[0]);
+						}
+					}
+					function createTextArea() 
+					{
+						var txtAreaHTML = "<div contentEditable='true' class='meme-txt-area'></div>";
+						$("#meme-bg-target").append(txtAreaHTML);
+						$(".meme-txt-area").draggable();
+						$(".meme-txt-area").focus();
+					}
+
+					function copyToCanvas(htmlElement) 
+					{
+						var canvas = document.getElementById("meme-preview");
+						var ctx = canvas.getContext("2d");
+
+						image = new Image(0, 0);
+							image.onload = function () {
+								canvas.width = this.naturalWidth;
+								canvas.height = this.naturalHeight;
+
+								var top = 0;
+							var left = 0;
+							var cellspace = 0;
+							var memeTargetWidth = $("#meme-bg-target").width();
+							var memeTargetHeight = $("#meme-bg-target").height();
+							var font = 24;
+							newFont = ( font / memeTargetWidth) * canvas.width;
+
+							  ctx.drawImage(this, 0,0);
+							  ctx.font = newFont+"px Arial";
+								  ctx.fillStyle = "#00ffe7";
+
+							  $(".meme-txt-area").each(function(){
+
+								  cellspace = parseInt($(this).css("padding"));
+								  left = parseInt($(this).css("left")) + cellspace;
+								  newLeft = ( left / memeTargetWidth) * canvas.width;
+								  top = parseInt($(this).css("top")) + 3 * cellspace;
+								  newTop = ( top / memeTargetHeight) * canvas.height;
+								  ctx.fillText($(this).text(), newLeft, newTop);
+								  });
+							};
+						
+					   image.src = $("#img-meme-bg").attr("src");
+					}
+
+					$(document).ready(function (e) {
+						$("#save-as-image").on('click', function () {
+							copyToCanvas($('#meme-bg-target'));
+						});
+						
+					});
+					</script>
+				</main>
+			</div>
+		</div>
+		<a id="lftStrip" class="strip"></a><a id="rgtStrip" class="strip"></a>
+		<p class="terms fadeInContent">
+			<a href="terms-of-use.html" style="color:#888">Terms of use</a> |
+			<a href="privacy-policy-full.html" style="color:#888">Privacy policy</a> |
+			<a href="https://play.google.com/store/apps/details?id=com.mattpike.fishpoweredbrowser" style="color:#888">Play store</a>
+		</p>
+	</body>
+</html>
