@@ -5,15 +5,15 @@
 		<link rel="stylesheet" href="../styles.css?v=1">
 		<link rel="stylesheet" href="../styles-promo-pages.css?v=1">
 		<link rel="stylesheet" href="jquery-ui.min.css">
-		<link rel="stylesheet" href="style.css?v=4">
+		<link rel="stylesheet" href="meme-styles.css?v=6">
 		
 
 		<meta name="description" content="Create your own memes while browsing the net with fishpowered browser">
 		<meta name="keywords" content="fishpowered,browser,meme,generator,creator">
 		
-		<link rel="icon" href="../favicon.svg">
+		<link rel="icon" href="../favicon.ico">
 		
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width">
 		<script src="jquery-1.11.2.min.js"></script>
 		<script src="jquery-ui.min.js"></script>
 		<script src="jquery.ui.touch-punch.min.js"></script>
@@ -37,7 +37,7 @@
 	<body class="featurePage">
 		<a id="lftStrip" class="strip"></a><a id="rgtStrip" class="strip"></a>
 		<header>
-			<h1>Fishpowered - meme generator/creator</h1>
+			<h1>Fishpowered - meme creator<span style="position:fixed;left:-1000px"> (generator)</span></h1>
 		</header>
 		<div>
 			
@@ -47,7 +47,6 @@
 					<div id="meme-bg-target">
 						<img src="default.png" id="img-meme-bg" class="img-meme-bg" />
 						<script>
-					
 						var url = new URL(window.location.href);
 						var src = url.searchParams.get("src");
 						if(src){
@@ -58,7 +57,6 @@
 					<div>
 						<!--<input type="file" name="meme_bg" value="Upload MEME Image" class="choose-file" onChange="showPreview(this);" />-->
 						<input type="button" name="add_text" value="Add Text" class="btn-add" onClick="createTextArea()" />
-						<input type="button" name="save-as-image" id="save-as-image" class="btn-save" value="Generate" />
 						<a href="" id="downloadLink" style="display:none">Download</a>
 					</div>
 					<div id="meme-canvas-container" style="">position:fixed; left:-1000000px
@@ -78,15 +76,44 @@
 					}
 					function createTextArea() 
 					{
-						var txtAreaHTML = "<div contentEditable='true' class='meme-txt-area'></div>";
+						if(!document.textCount){
+							document.textCount = 1;
+						}else{
+							document.textCount++;
+						}
+						var startingTop;
+						switch(document.textCount){
+							case 1:
+								startingTop = 10;
+								break;
+							case 2:
+								startingTop = $("#meme-bg-target").height() - 50;
+								break;
+							case 3:
+								startingTop = ($("#meme-bg-target").height() / 2) - 25;
+								break;
+							default:
+								startingTop = (Math.random() * $("#meme-bg-target").height());
+								if(startingTop > $("#meme-bg-target").height() - 50){
+									startingTop = $("#meme-bg-target").height() - 50;
+								}
+								break;
+						}
+						var txtAreaHTML = "<div contentEditable='true' class='meme-txt-area' style='top:"+startingTop+"px'>TEXT...</div>";
 						$("#meme-bg-target").append(txtAreaHTML);
 						$(".meme-txt-area").draggable({
-						  stop: function( event, ui ) {updateCanvas($('#meme-bg-target'));}
+						  stop: function( event, ui ) {
+						    setTimeout(function(){updateCanvas()}, 100);
+						  }
 						});
 						$(".meme-txt-area").focus();
+						document.execCommand('selectAll',false,null);
+						if(document.textCount > 1){
+							updateCanvas();
+						}
 					}
 
-					function updateCanvas(htmlElement) 
+					function updateCanvas() 
 					{
 						var canvas = document.getElementById("meme-preview");
 						var ctx = canvas.getContext("2d");
@@ -131,20 +158,18 @@
 							});
 						};	
 					   image.src = $("#img-meme-bg").attr("src");
-					   
-					   var imageData = document.getElementById('meme-preview').toDataURL();
-					   $('#downloadLink').show().attr('download', true).attr('href', imageData);
+					   setTimeout(function(){
+						var imageData = document.getElementById('meme-preview').toDataURL();
+						$('#downloadLink').show().attr('download', true).attr('href', imageData);
+					   }, 50);
 					}
 
 					$(document).ready(function (e) {
-						/*$(document).on('mouseup', function () {
-							updateCanvas($('#meme-bg-target'));
-						});*/
 						$(document).on('keyup', function () {
-							updateCanvas($('#meme-bg-target'));
+							updateCanvas();
 						});
 /*$("#save-as-image").on('click', function () {
-							updateCanvas($('#meme-bg-target'));
+							updateCanvas();
 							var imageData = document.getElementById('meme-preview').toDataURL();
 							$('#downloadLink').show().attr('download', true).attr('href', imageData);
 						});*/
