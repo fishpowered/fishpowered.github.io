@@ -8,6 +8,7 @@ body {
 	margin:20px 0px;
 	display:inline-block;
 	position:relative;
+	overflow: hidden;
 }
 #img-meme-bg {
 	width:100%;
@@ -19,9 +20,12 @@ body {
 	margin:0px;
 	position:relative;
 }
-.meme-txt-area {
+.meme-txt-area:active,.meme-txt-area:focus{
 	border:#FFF 1px dashed;
 	box-shadow:1px 1px 2px RGBA(144,144,144,0.6);
+}
+.meme-txt-area {
+	border:RGBA(0,0,0,0) 1px dashed;
 	position:absolute;
 	font-weight:bold;
 	top:0;

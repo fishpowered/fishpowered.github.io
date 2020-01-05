@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="../styles.css">
 		<link rel="stylesheet" href="../styles-promo-pages.css">
 		<link rel="stylesheet" href="jquery-ui.min.css">
-		<link rel="stylesheet" href="style.css?v=2">
+		<link rel="stylesheet" href="style.css?v=3">
 
 		<meta name="description" content="Generate/create your own memes from images on the net">
 		<meta name="keywords" content="fishpowered,browser,meme,generator,creator">
@@ -32,6 +32,7 @@
 		</script>
 	</head>
 	<body class="featurePage">
+		<a id="lftStrip" class="strip"></a><a id="rgtStrip" class="strip"></a>
 		<header>
 			<h1>Fishpowered meme generator</h1>
 		</header>
@@ -80,7 +81,7 @@
 						$(".meme-txt-area").focus();
 					}
 
-					function copyToCanvas(htmlElement) 
+					function updateCanvas(htmlElement) 
 					{
 						var canvas = document.getElementById("meme-preview");
 						var ctx = canvas.getContext("2d");
@@ -103,7 +104,7 @@
 							ctx.font = "bold "+newFont+"px Impact";
 							ctx.fillStyle = "#FFFFFF";
 							ctx.strokeStyle = 'black';
-							ctx.lineWidth = 4;
+							ctx.lineWidth = 3;
 							ctx.fillStyle = 'white';
 							//ctx.textAlign = "center";
 							
@@ -114,7 +115,7 @@
 							    newLeft = ( left / memeTargetWidth) * canvas.width;
 							    top = parseInt($(this).css("top")) + cellspace + 33; // arbitrary padding that seems to work on mobile
 							    newTop = ( top / memeTargetHeight) * canvas.height;
-							    var finalText = ($(this).html()+'').replace(/<div>/gi,'<br>').replace(/<\/div>/gi,''); // .text() removes line breaks so use html
+							    var finalText = ($(this).html()+'').replace(/<div>/gi,'<br>').replace(/<\/div>/gi,'').replace(/&nbsp;/gi,' '); // .text() removes line breaks so use html
 								var lines = finalText.split('<br>');
 								for (var i = 0; i<lines.length; i++){
 									
@@ -125,22 +126,31 @@
 							});
 						};	
 					   image.src = $("#img-meme-bg").attr("src");
+					   
+					   var imageData = document.getElementById('meme-preview').toDataURL();
+					   $('#downloadLink').show().attr('download', true).attr('href', imageData);
 					}
 
 					$(document).ready(function (e) {
-						$("#save-as-image").on('click', function () {
-							copyToCanvas($('#meme-bg-target'));
+						$(document).on('mouseup', function () {
+							updateCanvas($('#meme-bg-target'));
+						});
+						$(document).on('keyup', function () {
+							updateCanvas($('#meme-bg-target'));
+						});
+/*$("#save-as-image").on('click', function () {
+							updateCanvas($('#meme-bg-target'));
 							var imageData = document.getElementById('meme-preview').toDataURL();
 							$('#downloadLink').show().attr('download', true).attr('href', imageData);
-						});
+						});*/
 						
 					});
 					</script>
 				</main>
 			</div>
 		</div>
-		<a id="lftStrip" class="strip"></a><a id="rgtStrip" class="strip"></a>
-		<p class="terms fadeInContent">
+		
+		<p class="terms fadeInContent" style="position:static">
 			<a href="terms-of-use.html" style="color:#888">Terms of use</a> |
 			<a href="privacy-policy-full.html" style="color:#888">Privacy policy</a> |
 			<a href="https://play.google.com/store/apps/details?id=com.mattpike.fishpoweredbrowser" style="color:#888">Play store</a>

@@ -1,4 +1,5 @@
 .featurePage{padding:0 10%}
+.strip{z-index:auto}
 ul li{text-align:left}
 img.bordered{border:20px solid RGBA(50,50,50,0.4);display:inline-block}
 img.left{margin-right:20px}
