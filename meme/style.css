@@ -20,9 +20,10 @@ body {
 	margin:0px;
 	position:relative;
 }
-.meme-txt-area:active,.meme-txt-area:focus{
+.meme-txt-area:focus,.meme-txt-area:focus-within{
 	border:#FFF 1px dashed;
 	box-shadow:1px 1px 2px RGBA(144,144,144,0.6);
+	background:RGBA(255,255,255,0.5);
 }
 .meme-txt-area {
 	border:RGBA(0,0,0,0) 1px dashed;
@@ -32,7 +33,7 @@ body {
 	left:0;
 	text-align:center;
 	padding:0px;
-	min-width:200px;
+	min-width:150px;
 	text-align:left;
 	cursor:move;
 	font-family: impact,arial;
@@ -44,8 +45,7 @@ body {
     text-stroke-width: 2px;
 	-webkit-text-stroke: black;
     -webkit-text-stroke-width: 2px;
-	
-	
+	caret-color: #ff16a0;
 }
 .meme-txt-area:focus {
 	outline: none;

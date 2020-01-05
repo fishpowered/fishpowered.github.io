@@ -1,14 +1,17 @@
 <!DOCTYPE>
 <html>
 	<head>
-		<title>Fishpowered - meme generator</title>
-		<link rel="stylesheet" href="../styles.css">
-		<link rel="stylesheet" href="../styles-promo-pages.css">
+		<title>Fishpowered - meme generator/creator</title>
+		<link rel="stylesheet" href="../styles.css?v=1">
+		<link rel="stylesheet" href="../styles-promo-pages.css?v=1">
 		<link rel="stylesheet" href="jquery-ui.min.css">
-		<link rel="stylesheet" href="style.css?v=3">
+		<link rel="stylesheet" href="style.css?v=4">
+		
 
-		<meta name="description" content="Generate/create your own memes from images on the net">
+		<meta name="description" content="Create your own memes while browsing the net with fishpowered browser">
 		<meta name="keywords" content="fishpowered,browser,meme,generator,creator">
+		
+		<link rel="icon" href="../favicon.svg">
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="jquery-1.11.2.min.js"></script>
@@ -34,7 +37,7 @@
 	<body class="featurePage">
 		<a id="lftStrip" class="strip"></a><a id="rgtStrip" class="strip"></a>
 		<header>
-			<h1>Fishpowered meme generator</h1>
+			<h1>Fishpowered - meme generator/creator</h1>
 		</header>
 		<div>
 			
@@ -77,7 +80,9 @@
 					{
 						var txtAreaHTML = "<div contentEditable='true' class='meme-txt-area'></div>";
 						$("#meme-bg-target").append(txtAreaHTML);
-						$(".meme-txt-area").draggable();
+						$(".meme-txt-area").draggable({
+						  stop: function( event, ui ) {updateCanvas($('#meme-bg-target'));}
+						});
 						$(".meme-txt-area").focus();
 					}
 
@@ -132,9 +137,9 @@
 					}
 
 					$(document).ready(function (e) {
-						$(document).on('mouseup', function () {
+						/*$(document).on('mouseup', function () {
 							updateCanvas($('#meme-bg-target'));
-						});
+						});*/
 						$(document).on('keyup', function () {
 							updateCanvas($('#meme-bg-target'));
 						});
