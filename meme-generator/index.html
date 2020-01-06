@@ -119,6 +119,7 @@
 						var ctx = canvas.getContext("2d");
 
 						image = new Image(0, 0);
+						image.crossOrigin = "anonymous";
 						image.onload = function () {
 							canvas.width = this.naturalWidth;
 							canvas.height = this.naturalHeight;
@@ -158,8 +159,12 @@
 							});
 							setTimeout(
 								function(){
-									var imageData = document.getElementById('meme-preview').toDataURL();
-									$('#downloadLink').show().attr('download', true).attr('href', imageData);
+									try{
+										var imageData = document.getElementById('meme-preview').toDataURL();
+										$('#downloadLink').show().attr('download', true).attr('href', imageData);
+									}catch(e){
+									   alert("Error: unable to generate meme :'(");
+									}
 								}, 
 								50
 							);
