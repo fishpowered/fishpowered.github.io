@@ -54,10 +54,9 @@
 						}
 						</script>
 					</div>
-					<div>
-						<!---->
-						<input type="button" name="add_text" value="Add Text" class="btn-add" onClick="createTextArea()" />
-						<a href="" id="downloadLink" style="display:none">Download</a>
+					<div id="toolbar">
+						<a class="addButton" name="add_text" onClick="createTextArea()">Add text</a>
+						<a class="dlButton" href="" id="downloadLink" style="display:none">Download</a>
 					</div>
 					<div id="meme-canvas-container" style="">position:fixed; left:-1000000px
 						<canvas id="meme-preview"></canvas>
@@ -157,12 +156,15 @@
 								}
 							    
 							});
+							setTimeout(
+								function(){
+									var imageData = document.getElementById('meme-preview').toDataURL();
+									$('#downloadLink').show().attr('download', true).attr('href', imageData);
+								}, 
+								50
+							);
 						};	
 					   image.src = $("#img-meme-bg").attr("src");
-					   setTimeout(function(){
-						var imageData = document.getElementById('meme-preview').toDataURL();
-						$('#downloadLink').show().attr('download', true).attr('href', imageData);
-					   }, 50);
 					}
 
 					$(document).ready(function (e) {
@@ -181,7 +183,7 @@
 			</div>
 		</div>
 		
-		<p class="terms fadeInContent" style="position:static">
+		<p class="terms fadeInContent" style="position:static; padding-bottom:60px">
 			<a href="terms-of-use.html" style="color:#888">Terms of use</a> |
 			<a href="privacy-policy-full.html" style="color:#888">Privacy policy</a> |
 			<a href="https://play.google.com/store/apps/details?id=com.mattpike.fishpoweredbrowser" style="color:#888">Play store</a>
