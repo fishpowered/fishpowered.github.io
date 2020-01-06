@@ -44,7 +44,7 @@
 				<main>
 					<input id="fileChooser" type="file" name="meme_bg" value="Upload MEME Image" class="choose-file" onChange="showPreview(this);" style="display:none" />
 					<div id="meme-bg-target">
-						<img src="default.png" id="img-meme-bg" class="img-meme-bg" />
+						<img src="default.png" id="img-meme-bg" class="img-meme-bg" crossorigin="anonymous" />
 						<script>
 						var src = url.searchParams.get("src");
 						if(src){
