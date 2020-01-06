@@ -17,6 +17,7 @@
 		<script src="jquery-1.11.2.min.js"></script>
 		<script src="jquery-ui.min.js"></script>
 		<script src="jquery.ui.touch-punch.min.js"></script>
+		<script src="url-search-params-polyfill.js"></script>
 		<!--<link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">-->
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-149792573-1"></script>
@@ -29,9 +30,7 @@
 		</script>
 		
 		<script>
-	
 		var url = new URL(window.location.href);
-		var src = url.searchParams.get("src");
 		</script>
 	</head>
 	<body class="featurePage">
@@ -43,19 +42,20 @@
 			
 			<div class="" style="padding-bottom:50px">
 				<main>
-					
+					<input id="fileChooser" type="file" name="meme_bg" value="Upload MEME Image" class="choose-file" onChange="showPreview(this);" style="display:none" />
 					<div id="meme-bg-target">
 						<img src="default.png" id="img-meme-bg" class="img-meme-bg" />
 						<script>
-						var url = new URL(window.location.href);
 						var src = url.searchParams.get("src");
 						if(src){
 							$('#img-meme-bg').attr('src', src);
+						}else{
+							$('#fileChooser').show();
 						}
 						</script>
 					</div>
 					<div>
-						<!--<input type="file" name="meme_bg" value="Upload MEME Image" class="choose-file" onChange="showPreview(this);" />-->
+						<!---->
 						<input type="button" name="add_text" value="Add Text" class="btn-add" onClick="createTextArea()" />
 						<a href="" id="downloadLink" style="display:none">Download</a>
 					</div>
@@ -63,6 +63,7 @@
 						<canvas id="meme-preview"></canvas>
 					</div>
 					<script>
+					/* IF YOU*RE GOING TO TAKE THIS CODE FOR YOUR OWN USE, PLEASE PROVIDE A BACK LINK TO https://fishpowered.net - THANKS */
 					function showPreview(objFileInput) 
 					{
 						if (objFileInput.files[0]) 
