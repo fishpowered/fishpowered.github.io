@@ -1,9 +1,9 @@
-#homePg{padding:0 10%}
+#homePg{padding:0 6%}
 #homePg .fadeInContent{opacity:1;animation:sla 4s;width:100%}
 ul li{text-align:left}
 .promoImages{display:flex; justify-content:center; margin-top:1em}
 .promoImages img{width:100%; height:auto}
-.promoImages a{border:none;width:14%; margin:0 1%;}
+.promoImages a{border:none;width:14%; margin:0 0.5%;}
 @media only screen and (max-width: 600px) {
 	.promoImages{flex-wrap:wrap}
   .promoImages a{width:31%; margin:1%;}
