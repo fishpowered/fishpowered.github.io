@@ -4,7 +4,7 @@ const el = React.createElement;
 
 function EntertainMe (props) {
 	const [ selectedTags, setSelectedTagsState ] = React.useState([]);
-	
+
 	const tags = [
 		['indoor'],
 		['outdoor'],
@@ -12,31 +12,33 @@ function EntertainMe (props) {
 		['educational'],
 		['creative'],
 		['exercice'],
-		['free']
+		['free'],
+		['silly'],
+		['fun']
 	];
-	
+
 	const ideas = [
 		['Go for a bike ride', ['outdoor', 'exercise']],
 		['Go for a walk', ['outdoor', 'exercise']],
 		['Read a book', ['outdoor', 'indoor', 'educational']]
 	];
-	
+
 	// TODO look at React.memo if need to caching filtering
 	let filteredIdeas = ideas.filter((idea) => selectedTags.every(v => idea[1].includes(v)));
-    
+
 	if(filteredIdeas.length===0){
 		filteredIdeas.push(['None found', []]);
 	}
-	
+
     return el(
 		'div',
 		{className:'tagList'},
 		[
 			tags.map((tag) => SelectableTag(tag, selectedTags, setSelectedTagsState)),
-			filteredIdeas.map((idea) => el('p', {key:idea[0]}, idea[0])),	
+			filteredIdeas.map((idea) => el('p', {key:idea[0]}, idea[0])),
 		]
 	);
-		
+
 }
 
 function SelectableTag(tag, selectedTags, setSelectedTagsState){
