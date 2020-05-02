@@ -6,13 +6,13 @@
 		<link rel="stylesheet" href="../styles-promo-pages.css?v=1">
 		<link rel="stylesheet" href="jquery-ui.min.css">
 		<link rel="stylesheet" href="meme-styles.css?v=6">
-		
+
 
 		<meta name="description" content="Create your own memes while browsing the net with fishpowered browser">
 		<meta name="keywords" content="fishpowered,browser,meme,generator,creator">
-		
+
 		<link rel="icon" href="../favicon.ico">
-		
+
 		<meta name="viewport" content="width=device-width">
 		<script src="jquery-1.11.2.min.js"></script>
 		<script src="jquery-ui.min.js"></script>
@@ -28,7 +28,7 @@
 
 		  gtag('config', 'UA-149792573-1');
 		</script>
-		
+
 		<script>
 		var url = new URL(window.location.href);
 		</script>
@@ -39,7 +39,7 @@
 			<h1>Fishpowered - meme creator<span style="position:fixed;left:-1000px"> (generator)</span></h1>
 		</header>
 		<div>
-			
+
 			<div class="" style="padding-bottom:50px">
 				<main>
 					<input id="fileChooser" type="file" name="meme_bg" value="Upload MEME Image" class="choose-file" onChange="showPreview(this);" style="display:none" />
@@ -63,9 +63,9 @@
 					</div>
 					<script>
 					/* IF YOU*RE GOING TO TAKE THIS CODE FOR YOUR OWN USE, PLEASE PROVIDE A BACK LINK TO https://fishpowered.net - THANKS */
-					function showPreview(objFileInput) 
+					function showPreview(objFileInput)
 					{
-						if (objFileInput.files[0]) 
+						if (objFileInput.files[0])
 						{
 							var fileReader = new FileReader();
 							fileReader.onload = function (e) {
@@ -74,7 +74,7 @@
 							fileReader.readAsDataURL(objFileInput.files[0]);
 						}
 					}
-					function createTextArea() 
+					function createTextArea()
 					{
 						if(!document.textCount){
 							document.textCount = 1;
@@ -113,7 +113,7 @@
 						}
 					}
 
-					function updateCanvas() 
+					function updateCanvas()
 					{
 						var canvas = document.getElementById("meme-preview");
 						var ctx = canvas.getContext("2d");
@@ -140,7 +140,7 @@
 							ctx.lineWidth = 3;
 							ctx.fillStyle = 'white';
 							//ctx.textAlign = "center";
-							
+
 
 						    $(".meme-txt-area").each(function(){
 							    cellspace = parseInt($(this).css("padding"));
@@ -151,11 +151,11 @@
 							    var finalText = ($(this).html()+'').replace(/<div>/gi,'<br>').replace(/<\/div>/gi,'').replace(/&nbsp;/gi,' '); // .text() removes line breaks so use html
 								var lines = finalText.split('<br>');
 								for (var i = 0; i<lines.length; i++){
-									
+
 									ctx.fillText(lines[i], newLeft, newTop+ (i*lineHeight));
 									ctx.strokeText(lines[i], newLeft, newTop+ (i*lineHeight));
 								}
-							    
+
 							});
 							setTimeout(
 								function(){
@@ -165,10 +165,10 @@
 									}catch(e){
 									   alert("Error: unable to generate meme :'(");
 									}
-								}, 
+								},
 								50
 							);
-						};	
+						};
 					   image.src = $("#img-meme-bg").attr("src");
 					}
 
@@ -181,17 +181,17 @@
 							var imageData = document.getElementById('meme-preview').toDataURL();
 							$('#downloadLink').show().attr('download', true).attr('href', imageData);
 						});*/
-						
+
 					});
 					</script>
 				</main>
 			</div>
 		</div>
-		
+		<!-- todo use a web component... -->
 		<p class="terms fadeInContent" style="position:static; padding-bottom:60px">
-			<a href="terms-of-use.html" style="color:#888">Terms of use</a> |
-			<a href="privacy-policy-full.html" style="color:#888">Privacy policy</a> |
-			<a href="https://play.google.com/store/apps/details?id=com.mattpike.fishpoweredbrowser" style="color:#888">Play store</a>
+			<a href="/terms-of-use.html" style="color:#888">Terms of use</a> |
+			<a href="/privacy-policy-full.html" style="color:#888">Privacy policy</a> |
+			<a href="https://play.google.com/store/apps/details?id=fishpowered.best.browser" style="color:#888">Play store</a>
 		</p>
 	</body>
 </html>

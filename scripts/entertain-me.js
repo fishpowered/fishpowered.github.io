@@ -4,6 +4,7 @@ const el = React.createElement;
 
 function EntertainMe (props) {
 	const [ selectedTags, setSelectedTagsState ] = React.useState([]);
+
 	// https://en.wikipedia.org/wiki/List_of_hobbies
 	const tags = [
 		// Location
@@ -38,7 +39,7 @@ function EntertainMe (props) {
 		
 	];
 	
-	// TODO support links
+	// TODO support links 
 	const ideas = [
 		['Bike ride', [2, 6, 7]],
 		['Play a board game', [1, 3, 7]],
@@ -51,14 +52,14 @@ function EntertainMe (props) {
 		['Read a book about someone you admire', []],
 		['Catch up with an old friend', []],
 	];
-	
+
 	// TODO look at React.memo if need to caching filtering
 	let filteredIdeas = ideas.filter((idea) => selectedTags.every(v => idea[1].includes(v)));
-    
+
 	if(filteredIdeas.length===0){
 		filteredIdeas.push(['None found', []]);
 	}
-	
+
     return el(
 		'div',
 		{className:'tagList'},
