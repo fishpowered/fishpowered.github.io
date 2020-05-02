@@ -67,6 +67,26 @@ function inIframe () {
     </ul>
 	<h1>Downloads</h1>
 	<ul>
+		<li>
+			<a id="myButton" href="#" download="bar.txt">bar.json from blob: link</a>
+			<script type="text/javascript">
+			// dummy json data to save
+			var data = "Oh hi "+(Math.random()*1000000);
+
+			document.getElementById('myButton').onclick = function(event){
+
+				var json = JSON.stringify(data),
+				blob = new Blob([json], {type: "plain/text"}),
+				url = window.URL.createObjectURL(blob);
+			  
+				this.href = url;
+				this.target = '_blank';
+				
+				// target filename
+				this.download = 'bar'+(Math.random()*1000000)+'.txt';
+			}
+			</script>
+		</li>
 	  <li><a href="sample.pdf">sample.pdf</a></li>
 	  <li><a href="sample.pdf" target="_blank">sample.pdf target="_blank"</a></li>
       <li><a href="sample.doc">sample.doc</a></li>
