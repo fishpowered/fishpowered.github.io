@@ -4,21 +4,52 @@ const el = React.createElement;
 
 function EntertainMe (props) {
 	const [ selectedTags, setSelectedTagsState ] = React.useState([]);
-	
+	// https://en.wikipedia.org/wiki/List_of_hobbies
 	const tags = [
-		['indoor'],
-		['outdoor'],
-		['game'],
-		['educational'],
-		['creative'],
-		['exercice'],
-		['free']
+		// Location
+		[1, 'indoors'],
+		[2, 'outdoors'],
+		
+		// Motivation
+		[3, 'fun'],
+		[4, 'educational'],
+		[10, 'productive'],
+		[6, 'exercise'],
+		[5, 'creative'],
+		[5, 'competitive'],
+		[11, 'rewarding'],
+		[11, 'relaxing'],
+		[9, 'inspirational'],
+		[11, 'travel'],
+		[11, 'culture'],
+		[11, 'food'],
+		
+		// Company
+		[5, 'friends'],
+		[5, 'family'],
+		[5, 'alone'],
+		[5, 'pair'],
+		[5, 'team'],
+		
+		// Cost
+		[7, 'free'],
+		[8, 'cheap'],
+		[8, 'expensive'],
+		
 	];
 	
+	// TODO support links
 	const ideas = [
-		['Go for a bike ride', ['outdoor', 'exercise']],
-		['Go for a walk', ['outdoor', 'exercise']],
-		['Read a book', ['outdoor', 'indoor', 'educational']]
+		['Bike ride', [2, 6, 7]],
+		['Play a board game', [1, 3, 7]],
+		['Learn a language', [1, 4, 7, 8, 10]],
+		['Play cards', [1, 3, 7]],
+		['Walk around town', [2, 3, 6]],
+		['Read a book', [1, 2, 4, 7, 8, 9]],
+		['Make something for someone', [1, 5, 8, 11]],
+		['Fly a kite', []],
+		['Read a book about someone you admire', []],
+		['Catch up with an old friend', []],
 	];
 	
 	// TODO look at React.memo if need to caching filtering
@@ -32,23 +63,24 @@ function EntertainMe (props) {
 		'div',
 		{className:'tagList'},
 		[
-			tags.map((tag) => SelectableTag(tag, selectedTags, setSelectedTagsState)),
+			tags.map(([tagKey, tagName]) => SelectableTag(tagKey, tagName, selectedTags, setSelectedTagsState)),
 			filteredIdeas.map((idea) => el('p', {key:idea[0]}, idea[0])),	
 		]
 	);
-		
+
 }
 
-function SelectableTag(tag, selectedTags, setSelectedTagsState){
-	const isAlreadySelected = selectedTags.includes(tag[0]);
-	const allButCurrentTag = selectedTags.length==0 ? selectedTags : selectedTags.filter(selectedTag => selectedTag!=tag);
-	const newSelectedState = isAlreadySelected ? allButCurrentTag : [...selectedTags, tag[0]];
+function SelectableTag(tagKey, tagName, selectedTags, setSelectedTagsState){
+	const isAlreadySelected = selectedTags.includes(tagKey);
+	const allButCurrentTag = selectedTags.length==0 ? selectedTags : selectedTags.filter(selectedTag => selectedTag!=tagKey);
+	const newSelectedState = isAlreadySelected ? allButCurrentTag : [...selectedTags, tagKey];
+	console.log(tagKey+" = "+tagName);
 	return el(
 	  'label',
-	  { key:tag[0], className: 'tag '+(isAlreadySelected ? 'selected' : '') }, // onClick: () => setLiked(true)
+	  { key:'lbl_'+tagKey, className: 'tag '+(isAlreadySelected ? 'selected' : '') }, // onClick: () => setLiked(true)
 	  [
-		el('input', { title:tag[0], type:'checkbox',  onChange: () => setSelectedTagsState(newSelectedState)}),
-		tag[0]
+		el('input', { key:'chk_'+tagKey, title:tagName, type:'checkbox', value:tagKey, onChange: () => setSelectedTagsState(newSelectedState)}),
+		tagName
 	  ]
 	);
 }
