@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
 	<head>
-		
+		<style type="text/css">.shouldInject{color:green}</style>
 	</head>
 	<body>
 		<p>
@@ -14,7 +14,7 @@
 		</script>
 		
 		<p>
-			<label>Text field with id="site_username" should inject after click:
+			<label class="shouldInject">Text field with id="site_username" should inject after click:
 			<input type="text" id="site_username" />
 			</label>
 		</p>		
@@ -26,13 +26,13 @@
 		</p>		
 		
 		<p>
-			<label>Text field with name="site_login" and no input type should inject after click:
+			<label class="shouldInject">Text field with name="site_login" and no input type should inject after click:
 			<input name="site_login" />
 			</label>
 		</p>
 
 		<p>
-			<label>Text field with name="site_login" should inject after click:
+			<label class="shouldInject">Text field with name="site_login" should inject after click:
 			<input type="text" name="site_login" />
 			</label>
 		</p>		
@@ -51,7 +51,7 @@
 		
 		<p>
 			<label>Other field types should not be picked up:
-			<textarea name="username"></textarea>
+			<textarea name="username" id="username"></textarea>
 			</label>
 		</p>
 		<p>
@@ -59,17 +59,32 @@
 		
 		</p>
 		
-		<p>Google <input type="email" class="whsOnd zHQkBf" jsname="YPqjbf" autocomplete="username" spellcheck="false" tabindex="0" aria-label="Sähköposti tai puhelin" name="identifier" value="" autocapitalize="none" id="identifierId" dir="ltr" data-initial-dir="ltr" data-initial-value="">
+		<p><label  class="shouldInject">Google username test</label><input type="email" class="whsOnd zHQkBf" jsname="YPqjbf" autocomplete="username" spellcheck="false" tabindex="0" aria-label="Sähköposti tai puhelin" name="identifier" value="" autocapitalize="none" id="identifierId" dir="ltr" data-initial-dir="ltr" data-initial-value="">
 		</p>
-		
-		<input type="email" name="email" />
-		<p>password: <input type="password" name="password" /></p>
+		<p><label>Email field hmmm</label>
+		<input type="email" name="email" /></p>
+		<p>
+			<label>Other field names should not be picked up:
+			<input type="text" name="bob" />
+			</label>
+		</p>
+		<p>
+			<label class="shouldInject">Inputs preceeding password field should be picked up
+			<input name="beforepassword" />
+			</label>
+		</p>
+		<p>password: <input type="password" /></p>
+		<p>
+			<label>Field after password should not be picked up
+			<input type="text" name="afterpassword" />
+			</label>
+		</p>
 		If username exists, inject into page on focus, if already focused then auto-inject, 
 		<script type="text/javascript">
 		(function(){
 			try{
 				var existingUsername = 'test doodah'; // TODO !!!!!!!!!!!!!!!! <--- INSERT JAVA VAR HERE <---- !!!!!!!!!!!!!!!!!!!!!!!!!
-				var haystack = ['username', 'uname', 'login', 'email', 'user_name', 'log_in'];
+				var haystack = ['username', 'uname', 'login', 'user_name', 'log_in'];
 				var fpContainsUsernameString = function(needle) {
 					if(!needle){
 						return false;
@@ -81,23 +96,38 @@
 					}
 					return false;
 				};
+				var fpNextElementIsPasswordInput = function(selectedEl){
+					// Chrome seems to do this but in a stupid way e.g. all inputs before password are auto-completed as a username
+					var inputs = document.body.getElementsByTagName('input');
+					var hasFoundOrigField = false;
+					for(var n=0; n<inputs.length; n++){
+						if(hasFoundOrigField){
+							var inpAfterSelected = inputs.item(n);
+							return (inpAfterSelected.getAttribute('type')+'').toLowerCase()==='password';
+						}
+						if(inputs.item(n)===selectedEl){
+							hasFoundOrigField = true;
+						}
+					}
+					return false;
+				};
 				var fpIsUsernameElement = function(element) {
 					var elType = (element.getAttribute('type')+'').toLowerCase();
-					var autoComplete = (element.getAttribute('autocomplete')+'').toLowerCase();
-					if(autoComplete=="off" || element.tagName.toLowerCase() != 'input'){
+					if(element.tagName.toLowerCase() != 'input'){
 						return false;
 					}
+					var autoComplete = (element.getAttribute('autocomplete')+'').toLowerCase();
 					if(autoComplete=="username"){
 						return true;
+					}else if(autoComplete=="off"){
+						return false;
 					}
 					return (
-						elType=='email' || elType=='null' // string null on purpose! :/
-						|| (
-							elType=='text' 
-							&& (
-								fpContainsUsernameString(element.getAttribute('name')) 
-								|| fpContainsUsernameString(element.getAttribute('id'))
-							)
+						(elType=='email' || elType=='text' || elType=='null') // string null on purpose! :/
+						&& (
+							fpContainsUsernameString(element.getAttribute('name')) 
+							|| fpContainsUsernameString(element.getAttribute('id'))
+							|| fpNextElementIsPasswordInput(element)
 						)
 					);
 				};
@@ -111,7 +141,7 @@
 				var fpOnPageClick = function(e) {
 					// on page click in case the username field is dynamically loaded...
 					var element = event.target;					
-					if(fpIsUsernameElement(element)){
+					if(element && fpIsUsernameElement(element)){
 						// Restore existing username to empty input
 						fpSetExistingUsernameOnInput(element);
 
