@@ -7,7 +7,7 @@ img.right{margin-left:20px}
 .flexRow{display:flex; justify-content:center; margin-top:1em; align-items:center}
 .flexRow.reversed{flex-direction:row-reverse}
 header{text-align:center}
-.featureHeader{margin:0 auto; max-width:600px; width:100%}
+.featureHeader{margin:0 auto;}
 .strip{animation:none}
 header h1{margin-top:1.5em}
 main h2.alt{font-size:1.1em; color:aqua; font-family:sans-serif,helvetica; margin-top:1.5em}
