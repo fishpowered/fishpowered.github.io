@@ -54,6 +54,8 @@ function EntertainMe (props) {
 		['Fly a kite', []],
 		['Read a book about someone you admire', []],
 		['Catch up with an old friend', []],
+		['Learn dance moves to a song', []],
+		['Do something nice for the neighbours (clean/decorate communal areas)', []],
 	];
 
 	// TODO look at React.memo if need to caching filtering
