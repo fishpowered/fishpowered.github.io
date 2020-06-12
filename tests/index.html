@@ -26,7 +26,9 @@ function inIframe () {
   </head>
   <body>
 	<div style="position:fixed;bottom:0;left:100px;height:50px;background:green;width:100px;color:#fff;border:1px solid darkgreen;">Window docking...</div>
-	<script type="text/javascript">inIframe() ? document.write("IN FRAME3") : document.write("NOT IN FRAME3")</script>
+	<div><script type="text/javascript">inIframe() ? document.write("IN FRAME3") : document.write("NOT IN FRAME3")</script></div>
+	<div><script type="text/javascript">navigator.doNotTrack==="1" ? document.write("Do not track header found: "+navigator.doNotTrack) : document.write("Do not track header NOT found: "+navigator.doNotTrack)</script></div>
+	
 	<input type="text" name="search" value="Text input at top" />
 	<h1>General</h1>
 	<ul>
@@ -75,11 +77,11 @@ function inIframe () {
 		<li><a href="https://www.google.com/maps/search/?api=1&query=47.5951518,-122.3316393" target="_blank">Google maps specific coords (target blank)</a></li>
 		<li><a href="https://www.twitter.com">Twitter root URL</a></li>
 		<li><a href="https://twitter.com/MercyForAnimals/status/1196593982924632064">Twitter tweet</a></li>
-		<li><a href="https://twitter.com/nascar/status/1270819350644211719?s=21">Twitter tweet 2</a></li>
+		<li><a href="https://twitter.com/nascar/status/1270819350644211719?s=21" target="_blank">Twitter tweet 2 (target blank)</a></li>
 		<li><a href="https://www.instagram.com/">Instagram root URL</a></li>
 		<li><a href="https://www.instagram.com/p/CBPnMsCHPb3/?igshid=yvbpij2moxdy">Instagram content link</a></li>
 		<li><a href="https://en.wikipedia.org/wiki/Wikipedia:Featured_articles">Wikipedia "Featured_articles"</a></li>
-		<li><a href="https://en.wikipedia.org/wiki/Formula_One" target="_blank">Wikipedia "Featured_articles" (target blank)</a></li>
+		<li><a href="https://en.wikipedia.org/wiki/Formula_One" target="_blank">Wikipedia "Formula_One" (target blank)</a></li>
 	</ul>
 	<h1>Downloads</h1>
 	<ul>
