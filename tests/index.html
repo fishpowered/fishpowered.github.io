@@ -20,8 +20,10 @@ function inIframe () {
 }
 	 </script>
 	 <style type="text/css">
+	 html{padding:0; margin:0}
 	 table th{border:1px solid #aaa;font-size:90%}
 	 img:focus{height:50%}
+	 body{padding:0; margin:0; border:3px dashed red}
 	 </style>
   </head>
   <body>
@@ -323,7 +325,6 @@ function inIframe () {
 		<li><input type="checkbox" /> Long click a link, open in new tab, then press back [should close tab and animate to previous tab]</li>
 		<li><input type="checkbox" /> Restore closed tab and press back [close tab, return to previous tab or speed dial if none]</li>
 	</ul>
-	
-	<br><br><br><br><br><br>
+	<input type="text" value="bottom of page" />
   </body>
 </html>
