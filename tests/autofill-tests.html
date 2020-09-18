@@ -1,0 +1,158 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<style type="text/css">.shouldInject{color:green}</style>
+	</head>
+	<body>
+		<p>
+			<label>Pre-focused username needs injection before click:
+			<input type="text" name="username" id="startOnFocus" />
+			</label>
+		</p>
+		<script type="text/javascript">
+		document.getElementById("startOnFocus").focus();
+		</script>
+		
+		<p>
+			<label class="shouldInject">Text field with id="site_username" should inject after click:
+			<input type="text" id="site_username" />
+			</label>
+		</p>		
+		
+		<p>
+			<label>Values set by page should not be replaced:
+			<input type="text" id="site_username" value="don't replace on click" />
+			</label>
+		</p>		
+		
+		<p>
+			<label class="shouldInject">Text field with name="site_login" and no input type should inject after click:
+			<input name="site_login" />
+			</label>
+		</p>
+
+		<p>
+			<label class="shouldInject">Text field with name="site_login" should inject after click:
+			<input type="text" name="site_login" />
+			</label>
+		</p>		
+		
+		<p>
+			<label>Auto-complete off should be respected:
+			<input autocomplete="off" type="text" name="site_login" />
+			</label>
+		</p>
+		
+		<p>
+			<label>Other field names should not be picked up:
+			<input type="text" name="bob" />
+			</label>
+		</p>
+		
+		<p>
+			<label>Other field types should not be picked up:
+			<textarea name="username" id="username"></textarea>
+			</label>
+		</p>
+		<p>
+			<label>CONTROLLED INPUTS e.g. twitter (updating username must be done through keyevents otherwise state won't know about it)</label>
+		
+		</p>
+		
+		<p><label  class="shouldInject">Google username test</label><input type="email" class="whsOnd zHQkBf" jsname="YPqjbf" autocomplete="username" spellcheck="false" tabindex="0" aria-label="Sähköposti tai puhelin" name="identifier" value="" autocapitalize="none" id="identifierId" dir="ltr" data-initial-dir="ltr" data-initial-value="">
+		</p>
+		<p><label>Email field hmmm</label>
+		<input type="email" name="email" /></p>
+		<p>
+			<label>Other field names should not be picked up:
+			<input type="text" name="bob" />
+			</label>
+		</p>
+		<p>
+			<label class="shouldInject">Inputs preceeding password field should be picked up
+			<input name="beforepassword" />
+			</label>
+		</p>
+		<p>password: <input type="password" /></p>
+		<p>
+			<label>Field after password should not be picked up
+			<input type="text" name="afterpassword" />
+			</label>
+		</p>
+		If username exists, inject into page on focus, if already focused then auto-inject, 
+		<script type="text/javascript">
+		(function(){
+			try{
+				
+				var haystack = ['username', 'uname', 'login', 'user_name', 'log_in'];
+				var fpContainsUsernameString = function(needle) {
+					if(!needle){
+						return false;
+					}
+					for(i=0;i<haystack.length;i++){
+						if((''+needle).toLowerCase().indexOf(haystack[i]) > -1){
+							return true;
+						}
+					}
+					return false;
+				};
+				var fpNextElementIsPasswordInput = function(selectedEl){
+					// Chrome seems to do this but in a stupid way e.g. all inputs before password are auto-completed as a username
+					var inputs = document.body.getElementsByTagName('input');
+					var hasFoundOrigField = false;
+					for(var n=0; n<inputs.length; n++){
+						if(hasFoundOrigField){
+							var inpAfterSelected = inputs.item(n);
+							return fpIsPasswordInput(inpAfterSelected);
+						}
+						if(inputs.item(n)===selectedEl){
+							hasFoundOrigField = true;
+						}
+					}
+					return false;
+				};
+				var fpIsPasswordInput = function(el){
+					return (el.getAttribute('type')+'').toLowerCase()==='password';
+				};
+				var fpIsUsernameElement = function(element) {
+					var elType = (element.getAttribute('type')+'').toLowerCase();
+					if(element.tagName.toLowerCase() != 'input'){
+						return false;
+					}
+					var autoComplete = (element.getAttribute('autocomplete')+'').toLowerCase();
+					if(autoComplete=="username" || autoComplete.indexOf("username")>-1){ // multiple things can be listed e.g. "username name"
+						return true;
+					}else if(autoComplete=="off"){
+						return false;
+					}
+					return (
+						(elType=='email' || elType=='text' || elType=='null') // string null on purpose! :/
+						&& (
+							fpContainsUsernameString(element.getAttribute('name')) 
+							|| fpContainsUsernameString(element.getAttribute('id'))
+							|| fpNextElementIsPasswordInput(element)
+						)
+					);
+				};
+				var fpOnPageClick = function(e) {
+					// on page click in case the username field is dynamically loaded...
+					var element = event.target;					
+					if(element && fpIsUsernameElement(element)){
+						fpandroid.requestAutoFill("username");
+					}
+					if(element && fpIsPasswordInput(element)){
+						fpandroid.requestAutoFill("password");
+					}
+				}
+				window.addEventListener('click', fpOnPageClick);
+				
+				// If the username field starts focused, the keyboard will already be open so we need to auto inject the username
+				if(document.activeElement && fpIsUsernameElement(document.activeElement) 
+					&& (document.activeElement.value=='' || document.activeElement.value==null)){
+					fpandroid.requestAutoFill("username");
+				}
+			}catch(e){console.error("FP auto username err: "+e);}
+		})(); // scope var because let and const dont work on old versions of chrome
+		</script>
+	</body>
+</html>
