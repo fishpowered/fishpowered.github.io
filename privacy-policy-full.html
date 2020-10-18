@@ -22,8 +22,8 @@
 			<p>None.</p>
 			<h2>How do we make money?</h2>
 			<p>We don't. In the future if Fishpowered browser becomes popular we 
-			will explore monetising the app through fair and transparent schemes, for example selling
-			themes, merchandise and Patreon backing. We would like to stress that we will never sell a user's
+			will explore monetising the app through fair and transparent schemes, for example, selling
+			themes, merchandise and/or a sponsored default search engine. We would like to stress that we will never sell a user's
 			browsing/personal data in order for advertising or any other means.</p>
 			
 			<h2>What data leaves my device from the Fishpowered browser app?</h2>
@@ -40,11 +40,10 @@
 				<li>Anything you agree to share e.g. a site may request your GPS location</li>
 				<li>Android/Google play store will automatically backup apps, their preferences and their data. This can
 				be disabled in Android settings.</li>
-				<li>Crash reports (in the event of a crash). These are anonymous and contain software 
-				information about the nature of the crash (source code file, line number, and error message). 
-				Potentially	these messages could contain some of your browsing information such as the current URL but 
-				there is no personal information to link it to a real person. This crash report
-				gets sent to the Crashlytics service provided by Google (formerly Fabric.io) and is commonly used in apps</li>
+				<li>Crash reports (in the event of a crash). These are anonymous, held by Google, and is commonly used by most
+                apps to maintain quality. The crash reports contain basic device information (manufacturer, model, Android version) 
+				and information about the nature of the crash (source code file, line number, and error message). <a href="https://firebase.google.com/support/privacy#crash-stored-info">More information here</a>. 
+				</li>
 			</ul>
 			<h2>Who <em>can</em> view my browsing activity?</h2>
 			<p>No-one other than who/what is typically involved in a web browser to server request...</p>
@@ -62,11 +61,11 @@
 				(can be disabled in the settings), and security procedures handled by Android's webview
 				library (built on Google Chromium) such as Google's safe browsing protection.</li>
 				<li>Searches in the address bar are sent anonymously to Google to receive auto-completion suggestions.</li>
-				<li>Visits to unencrypted websites can potentially be spied upon by anyone who
-				can intercept your data transmission to/from the server. An unlocked
-				padlock is displayed when visiting an insecure website.</li>
+				<li>Unencrypted websites (e.g. http://) can potentially be spied upon by anyone who
+				can intercept your data transmission to/from the server. A red unlocked
+				padlock is displayed next to the address when visiting an insecure website.</li>
 				<li>Anyone with physical/virtual access to your device (passwords/locks permitting).</li>
-				<li>Any other apps or users with admin/root permissions to your device.</li>
+				<li>Any other apps or users with <strong>admin/root</strong> permissions to your device.</li>
 			</ul>
 			<h2>What data is stored on my device as a result of using the Fishpowered browser?</h2>
 			<p>Nothing you wouldn't expect from a typical web browser...</p>
@@ -87,20 +86,18 @@
 				<li>Temporary files created by the app for caching purposes e.g. caching of tab preview thumbnails, favourite images etc.</li>
 			</ul>
 			<h2>What data/permissions does Fishpowered browser have access to on my phone?</h2>
-			<ul>
-				<li><span style="text-decoration:line-through">The phone's state/status. This is used to detect incoming phone calls/messages and pause playback of the postcast/listen mode. Unfortunately this permission also grants the app access to the phone's telephone number. This data is not collected/used. We are currently looking at ways to improve this permission so it's not required to download the app, only when the feature is used.</span> - Permission removed in 1.1.7</li>
-			</ul>
-			<p>Otherwise nothing you wouldn't expect from a typical web browser, specifically...</p>
+			<p>Nothing you wouldn't expect from a typical web browser, specifically...</p>
 			<ul>
 				<li>The phone's internet connection (mobile data/WIFI) is required to access the internet.</li>
 				<li>The devices general location (i.e. to the nearest town) determined by network operator 
 				(used when a website requests this information and is permitted it by the user).</li>
 				<li>The device's specific GPS/location data (used when a website requests this information and is permitted it by the user).</li>
 				<li>The device's network state e.g. is there a valid internet connection.</li>
-				<li>The ability to write to external storage e.g. file downloads.</li>
+				<li>The ability to write to external storage e.g. file downloads (permission must be granted by the user when they first attempt to write a file).</li>
 				<li>The ability to record audio for voice searches (sent to Google) and websites that have audio inputs. Note: this requires the users permissions on modern versions of Android and we do not
 				store any microphone data.</li>
 				<li>Very general and anonymous device data such as screen rotation, dimensions, Android version etc.</li>
+                <li>The ability to create shortcuts on the phone home screen/menus. Used when "pinning" bookmarks/faves.</li>
 			</ul>
 			<h2>Terms/definitions</h2>
 			<dl>
