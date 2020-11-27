@@ -10,7 +10,7 @@
 		e = e || window.event;
 		var parts = [];
 		var selector = null;
-		var elementsUnderTap = document.elementsFromPoint(e.clientX, e.clientY)
+		var elementsUnderTap = document.elementsFromPoint(e.clientX, e.clientY);
 		for (var i = 0; i < elementsUnderTap.length; i++) {
 			selector = fetchCssPath(elementsUnderTap[i]);
 			if(isSuitableSelector(selector)){
