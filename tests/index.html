@@ -24,11 +24,14 @@ function inIframe () {
 	 table th{border:1px solid #aaa;font-size:90%}
 	 img:focus{height:50%}
 	 body{padding:0; margin:0; border:3px dashed red}
+    .coordinateHelper{display:none}
 	 </style>
   </head>
   <body>
 	<div style="position:fixed;bottom:0;left:100px;height:50px;background:green;width:100px;color:#fff;border:1px solid darkgreen;">Window docking...</div>
 	<div style="position:fixed;right:0;top:0;background:white;color:blue;border:1px solid darkgreen;padding:2px" onclick="window.scrollTo(0,document.body.scrollHeight);">TO BOTTOM</div>
+	<div class="coordinateHelper" style="position:fixed;top:100px;left:100px;height:100px;width:100px;background:white;color:#fff;border:1px solid darkgreen;">L:100, T:100, H:100, W:100</div>
+	<div class="coordinateHelper" style="position:fixed;top:400px;left:400px;height:50px;width:50px;background:white;color:#fff;border:1px solid darkgreen;">L:400, T:400, H:50, W:50</div>
 	<div><script type="text/javascript">inIframe() ? document.write("IN FRAME3") : document.write("NOT IN FRAME3")</script></div>
 	<div><script type="text/javascript">navigator.doNotTrack==="1" ? document.write("Do not track header found: "+navigator.doNotTrack) : document.write("Do not track header NOT found: "+navigator.doNotTrack)</script></div>
 	<a href="file:///data/user/0/fishpowered.best.browser/files/tabThumb86.jpg"><img src="file:///data/user/0/fishpowered.best.browser/files/tabThumb86.jpg" crossorigin /></a>
@@ -39,6 +42,7 @@ function inIframe () {
 		<li><input type="checkbox" /> Version set correctly in VERSION file AND app build.gradle</li>
 		<li><input type="checkbox" /> <a href="./texttospeech.html">Text to speech</a></li>
 		<li><input type="checkbox" /> <a href="./text-to-speech-basic.html">Text to speech (basic)</a></li>
+        <li><input type="checkbox" /> <a onclick="document.querySelectorAll('.coordinateHelper').forEach((button) => button.style.display='block';)">Debug coordinates</a></li>
 	</ul>
     <h1>URL's</h1>
     <ul>
