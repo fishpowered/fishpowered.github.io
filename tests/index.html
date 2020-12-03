@@ -18,7 +18,7 @@ function inIframe () {
         return false;
     }
 }
-    document.addEventListener('mousemove', function(e){
+    document.addEventListener('click', function(e){
         var posX = event.clientX, posY = event.clientY;
         document.getElementById("coordDebug").innerText = posX+', '+posY;
     });
