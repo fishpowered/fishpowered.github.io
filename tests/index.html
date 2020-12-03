@@ -18,10 +18,9 @@ function inIframe () {
         return false;
     }
 }
-    window.bob = document.getElementById("coordDebug");
     document.addEventListener('mousemove', function(e){
         var posX = event.clientX, posY = event.clientY;
-        window.bob.innerHtml = posX+', '+posY;
+        document.getElementById("coordDebug").innerText = posX+', '+posY;
     });
 	 </script>
 	 <style type="text/css">
