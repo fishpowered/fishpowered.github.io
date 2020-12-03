@@ -18,6 +18,11 @@ function inIframe () {
         return false;
     }
 }
+    window.bob = document.getElementById("coordDebug");
+    document.addEventListener('mousemove', function(e){
+        var posX = event.clientX, posY = event.clientY;
+        window.bob.innerHtml = posX+', '+posY;
+    });
 	 </script>
 	 <style type="text/css">
 	 html{padding:0; margin:0}
@@ -28,7 +33,7 @@ function inIframe () {
 	 </style>
   </head>
   <body>
-	<div style="position:fixed;bottom:0;left:100px;height:50px;background:green;width:100px;color:#fff;border:1px solid darkgreen;">Window docking...</div>
+	<div style="position:fixed;bottom:0;left:100px;height:50px;background:green;width:100px;color:#fff;border:1px solid darkgreen;" id="coordDebug">? , ?</div>
 	<div style="position:fixed;right:0;top:0;background:white;color:blue;border:1px solid darkgreen;padding:2px" onclick="window.scrollTo(0,document.body.scrollHeight);">TO BOTTOM</div>
 	<div class="coordinateHelper" style="position:fixed;top:100px;left:100px;height:100px;width:100px;">L:100, T:100, H:100, W:100</div>
 	<div class="coordinateHelper" style="position:fixed;top:400px;left:400px;height:50px;width:50px;">L:400, T:400, H:50, W:50</div>
