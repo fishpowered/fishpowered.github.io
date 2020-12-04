@@ -20,7 +20,7 @@ function inIframe () {
 }
     document.addEventListener('click', function(e){
         var posX = event.clientX, posY = event.clientY;
-        document.getElementById("coordDebug").innerText = posX+', '+posY;
+        document.getElementById("coordDebug2").innerText = posX+', '+posY;
     });
 	 </script>
 	 <style type="text/css">
@@ -36,6 +36,7 @@ function inIframe () {
 	<div style="position:fixed;right:0;top:0;background:white;color:blue;border:1px solid darkgreen;padding:2px" onclick="window.scrollTo(0,document.body.scrollHeight);">TO BOTTOM</div>
 	<div class="coordinateHelper" style="position:fixed;top:100px;left:100px;height:100px;width:100px;">L:100, T:100, H:100, W:100</div>
 	<div class="coordinateHelper" style="position:fixed;top:400px;left:400px;height:50px;width:50px;">L:400, T:400, H:50, W:50</div>
+	<div class="coordinateHelper" id="coordDebug2" style="position:fixed;top:50%;left:50%;height:50px;width:50px;">?,?</div>
 	<div><script type="text/javascript">inIframe() ? document.write("IN FRAME3") : document.write("NOT IN FRAME3")</script></div>
 	<div><script type="text/javascript">navigator.doNotTrack==="1" ? document.write("Do not track header found: "+navigator.doNotTrack) : document.write("Do not track header NOT found: "+navigator.doNotTrack)</script></div>
 	<a href="file:///data/user/0/fishpowered.best.browser/files/tabThumb86.jpg"><img src="file:///data/user/0/fishpowered.best.browser/files/tabThumb86.jpg" crossorigin /></a>
