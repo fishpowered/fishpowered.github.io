@@ -82,6 +82,8 @@ function inIframe () {
 	 <h1>Open http links in apps</h1>
     <ul>
 		<li><a href="https://maps.google.com">Google maps root URL</a></li>
+        <li>Test link above but by opening in new tab/pin to window. It should open the website in the app but then allow you to push the "use app" button to launch the app</li>
+        <li>Repeat the test above but with the google play store link, this one redirects to an intent url so we have no choice but to either open it or block it</li>
 		<li><a href="https://www.google.com/maps/search/?api=1&query=47.5951518,-122.3316393">Google maps specific coords</a></li>
 		<li><a href="https://www.google.com/maps/search/?api=1&query=pizza+helsinki">Google maps pizza helsinki</a></li>
 		<li><a href="https://play.app.goo.gl/?link=https://play.google.com/store/apps/details?id=fishpowered.best.browser&ddl=1">Open Google Play store to Fishpowered</a></li>
@@ -118,6 +120,7 @@ function inIframe () {
 			</script>
 		</li>
 	  <li><a href="https://apkmody.io/">Test APK download served via headers (requires referer to be set)!</a></li>
+      <li><a href="https://wallpaperaccess.com/">Test wallpaper download (requires application/octet-stream to be converted to correct mime)</a></li>
 	  <li><a href="sample.pdf">sample.pdf</a></li>
 	  <li><a href="sample.pdf" target="_blank">sample.pdf target="_blank"</a></li>
       <li><a href="sample.doc">sample.doc</a></li>
