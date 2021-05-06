@@ -8,6 +8,8 @@
        if (focusWindow && newWindow && newWindow.focus) {newWindow.focus()}
        return false;
      }
+    var openAdPopup = function(){openPopup('https://welcome.unibet.com', 'adspam', true)};
+    setTimeout(openAdPopup, 1000);
 	 
 	//const doc = iframe.contentDocument || iframe.contentWindow.document;
 	//const win = iframe.contentWindow || iframe.contentDocument.defaultView;
@@ -78,6 +80,7 @@ function inIframe () {
       <li><a href="mailto:fakeaddress@fakedomain.com">mailto:fakeaddress@fakedomain.com</a></li>
       <li><a href="https://badssl.com">https://badssl.com</a></li>
       <li><a href="https://maps.google.com">GPS test</a></li>
+        <li><a onclick="openAdPopup()">Open blacklisted ad popup</a></li>
     </ul>
 	 <h1>Open http links in apps</h1>
     <ul>
