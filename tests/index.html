@@ -4,12 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript">
       function openPopup(url,windowName, focusWindow) {
+console.log("open popup"+url);
        newWindow=window.open(url,windowName,'height=600,width=450');
        if (focusWindow && newWindow && newWindow.focus) {newWindow.focus()}
        return false;
      }
     var openAdPopup = function(){openPopup('https://welcome.unibet.com', 'adspam', true)};
-    setTimeout(openAdPopup, 1000);
+    
+    window.addEventListener('DOMContentLoaded', function(){window.open('https://poker.bet365.com', 'onloadspam','height=600,width=450')});
 	 
 	//const doc = iframe.contentDocument || iframe.contentWindow.document;
 	//const win = iframe.contentWindow || iframe.contentDocument.defaultView;
