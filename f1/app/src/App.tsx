@@ -3,8 +3,9 @@ import './App.css';
 import {driverRates} from "./driver-rates";
 import {constructorRates} from "./constructor-rates";
 
+const COL_CONSTRUCTOR_NAME = 0;
 const COL_CONSTRUCTOR_PRICE = 1;
-const COL_CONSTRUCTOR_POINTS = 3;
+const COL_CONSTRUCTOR_POINTS = 2;
 const COL_DRIVER_PRICE = 2;
 const COL_DRIVER_NAME = 0;
 const COL_DRIVER_TEAM = 1;
@@ -131,7 +132,7 @@ async function calculateBestTeams(budget:(string|number), driverRates: string[][
                                 ;
                                 squads.push([
                                     round(score),
-                                    constructor[0],
+                                    constructor[COL_CONSTRUCTOR_NAME],
                                     driverRates[d1][COL_DRIVER_NAME],
                                     driverRates[d2][COL_DRIVER_NAME],
                                     driverRates[d3][COL_DRIVER_NAME],
