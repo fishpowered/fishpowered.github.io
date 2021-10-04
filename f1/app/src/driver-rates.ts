@@ -10,7 +10,7 @@ export const driverRates = [
     [
         "Max Verstappen",
         "Red Bull",
-        "$25.6m",
+        "$25.5m",
         '',
         "518"
     ],
@@ -24,7 +24,7 @@ export const driverRates = [
     [
         "Sergio Perez",
         "Red Bull",
-        "$18.3m",
+        "$18.2m",
         '',
         "303.5"
     ],
@@ -89,7 +89,7 @@ export const driverRates = [
         "Alpine",
         "$10.3m",
         '',
-        "140"
+        "110"
     ],
     [
         "Kimi Raikkonen",
@@ -124,7 +124,7 @@ export const driverRates = [
         "Williams",
         "$6.3m",
         '',
-        "119"
+        "107"
     ],
     [
         "Mick Schumacher",
