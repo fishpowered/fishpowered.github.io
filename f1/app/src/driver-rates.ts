@@ -3,142 +3,142 @@ export const driverRates = [
     [
         "Lewis Hamilton",
         "Mercedes",
-        "$33.1m",
+        "$33.0m",
         '',
-        "539.5"
+        "616.5"
     ],
     [
         "Max Verstappen",
         "Red Bull",
-        "$25.5m",
+        "$25.6m",
         '',
-        "518"
+        "597"
     ],
     [
         "Valtteri Bottas",
         "Mercedes",
         "$23.4m",
         '',
-        "344.5"
+        "425.5"
     ],
     [
         "Sergio Perez",
         "Red Bull",
-        "$18.2m",
+        "$18.4m",
         '',
-        "303.5"
+        "369.5"
     ],
     [
         "Charles Leclerc",
         "Ferrari",
         "$17.6m",
         '',
-        "278"
+        "331"
     ],
     [
         "Daniel Ricciardo",
         "Mclaren",
         "$15.8m",
         '',
-        "273"
+        "310"
     ],
     [
         "Sebastian Vettel",
         "Aston Martin",
-        "$15.2m",
+        "$15.1m",
         '',
-        "123"
+        "135"
     ],
     [
         "Fernando Alonso",
         "Alpine",
-        "$15.1m",
+        "$15.0m",
         '',
-        "228.5"
+        "216.5"
     ],
     [
         "Carlos Sainz",
         "Ferrari",
-        "$14.5m",
+        "$14.8m",
         '',
-        "287"
+        "325"
     ],
     [
         "Lando Norris",
         "Mclaren",
         "$14.2m",
         '',
-        "388.5"
+        "425.5"
     ],
     [
         "Lance Stroll",
         "Aston Martin",
-        "$13.3m",
+        "$13.2m",
         '',
-        "113"
+        "128"
     ],
     [
         "Pierre Gasly",
         "Alpha Tauri",
-        "$12.0m",
+        "11.9m",
         '',
-        "213"
+        "224"
     ],
     [
         "Esteban Ocon",
         "Alpine",
         "$10.3m",
         '',
-        "110"
+        "120"
     ],
     [
         "Kimi Raikkonen",
         "Alfa Romeo",
         "$9.1m",
         '',
-        "134.5"
+        "152.5"
     ],
     [
         "Yuki Tsunoda",
         "Alpha Tauri",
-        "$8.3m",
+        "$8.2m",
         '',
-        "56.5"
+        "63.5"
     ],
     [
         "Antonio Giovinazzi",
         "Alfa Romeo",
         "$8.0m",
         '',
-        "101"
+        "128"
     ],
     [
         "Nicholas Latifi",
         "Williams",
         "$6.4m",
         '',
-        "81.5"
+        "82.5"
     ],
     [
         "George Russell",
         "Williams",
         "$6.3m",
         '',
-        "107"
+        "130"
     ],
     [
         "Mick Schumacher",
         "Haas",
         "$5.7m",
         '',
-        "111"
+        "121"
     ],
     [
         "Nikita Mazepin",
         "Haas",
         "$5.3m",
         '',
-        "12.5"
+        "14.5"
     ]
 ];
 

@@ -1,53 +1,53 @@
 export const constructorRates = [
     [
         "Mercedes",
-        "$37.3m",
-        '818.5'
+        "$37.1m",
+        '956.5'
     ],
     [
         "Red Bull",
-        "$26.3m",
-        '753.5'
+        "$26.5m",
+        '888.5'
     ],
     [
         "Ferrari",
         "$18.8m",
-        '523.5'
+        '594.5'
     ],
     [
         "Mclaren",
         "$18.8m",
-        '569'
+        '623'
     ],
     [
         "Aston Martin",
         "$16.4m",
-        '233.5'
+        '250.5'
     ],
     [
         "Alpine",
-        "$15.2m",
-        '316'
+        "$15.1m",
+        '327'
     ],
     [
         "Alpha Tauri",
         "$12.6m",
-        '260'
+        '283'
     ],
     [
         "Alfa Romeo",
         "$9.1m",
-        '178'
+        '213'
     ],
     [
         "Williams",
         "$6.3m",
-        '171'
+        '186'
     ],
     [
         "Haas",
         "$6.1m",
-        '131'
+        '133'
     ]
 ];
 /* Pulls prices but not points: https://www.f1fantasytracker.com/prices.html

@@ -20,7 +20,7 @@ const COL_SQUAD_DRIVER5 = 6;
 const COL_SQUAD_BUDGET_REMAINING = 7;
 
 function App() {
-    const [budget, setBudget] = useState('106.70');
+    const [budget, setBudget] = useState('107.80');
     const [bestTeams, setBestTeams] = useState<(string|number)[][]>([]);
     const [isCalculating, setIsCalculating] = useState(false);
 
